@@ -3,33 +3,41 @@ from sklearn.model_selection import KFold
 import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 import argparse
+import xgboost as xgb
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-t', '--task_num', type=int,default=0) # task_list=['MaterialType-2','Sex-2','DiseaseState-16','BioSourceType-7']
 parser.add_argument('-rf', '--raw_flag', type=bool, default=False) # `True` use raw data, `False` use pca data
 parser.add_argument('-dm', '--dimension', type=int,default=22283)
-parser.add_argument('-ne', '--n_estimators', type=int,default=10)
-parser.add_argument('-md', '--max_depth', type=int, default=20)
-parser.add_argument('-msplit', '--min_samples_split', type=int, default=2)
-parser.add_argument('-mleaf', '--min_samples_leaf', type=int, default=1)
+
+#  {'newton-cg', 'lbfgs', 'sag', 'saga'},
+
 # save args
 args = parser.parse_args()
 
 # configuration
-kernel_list=[ 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
 task_list=['MaterialType-2','Sex-2','DiseaseState-16','BioSourceType-7']
-param={
-    'n_estimators':args.n_estimators,
-    'max_features':'sqrt',
-    'max_depth':args.max_depth,
-    'min_samples_split':args.min_samples_split,
-    'min_samples_leaf':args.min_samples_leaf,
-    'n_jobs': -1,
-    'random_state':1,
-}
+num_class_list=[2,2,16,7]
+
+param = {
+         # 'reg_alpha': 0.0001,
+         # 'colsample_bytree': 0.8,
+         # 'scale_pos_weight': 1,
+         'learning_rate': 0.07,
+         # 'min_child_weight': 11,
+         'subsample': 0.8,
+         # 'reg_lambda': 0.0049,
+         'seed': 1,
+         'objective': 'multi:softmax',
+         'max_depth': 1,
+         'gamma': 0.0,
+         'silent': 1,
+         'num_class': num_class_list[args.task_num]
+         }
+
 task_name=task_list[args.task_num]
 raw_flag=False
 print 'raw_flag',raw_flag
@@ -57,6 +65,10 @@ y_mask=(y!=y_mask)
 
 # mask data
 y=y[y_mask]
+
+y=y-1
+print y
+
 X = X[y_mask]
 
 
@@ -73,15 +85,20 @@ micro_f1=[]
 
 for train_index, test_index in kf.split(X):
     # print("TRAIN:", train_index, "TEST:", test_index)
-    X_train, X_test = X[train_index], X[test_index]
-    y_train, y_test = y[train_index], y[test_index]
 
-    clf= RandomForestClassifier(**param)
-    clf.fit(X, y)
+    y_test=y[test_index]
 
-    clf.fit(X_train, y_train)
+    dtrain = xgb.DMatrix(data=X[train_index], label=y[train_index])
+    dtest = xgb.DMatrix(data=X[test_index], label=y[test_index])
 
-    y_pred = clf.predict(X_test)
+    # evallist = [(dtrain, 'train'), (dtest, 'eval')]
+    bst = xgb.train(param, dtrain, 100,
+                    # evallist
+                    )
+
+    y_pred = bst.predict(dtest)
+
+
     macro_f1.append(f1_score(y_test, y_pred, average='macro'))
     micro_f1.append(f1_score(y_test, y_pred, average='micro'))
     print 'macro f1', f1_score(y_test, y_pred, average='macro')
@@ -91,7 +108,7 @@ print 'avg macro f1', sum(macro_f1)/len(macro_f1)
 print 'avg micro f1', sum(micro_f1)/len(micro_f1)
 
 
-with open('./../log/rf.csv', 'a') as fout:
+with open('./../log/xgb.csv', 'a') as fout:
     fout.write(task_name+',')
     if raw_flag:
         fout.write('use raw data,')

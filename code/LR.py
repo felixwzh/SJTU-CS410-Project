@@ -3,7 +3,7 @@ from sklearn.model_selection import KFold
 import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 import argparse
 
 
@@ -11,22 +11,23 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-t', '--task_num', type=int,default=0) # task_list=['MaterialType-2','Sex-2','DiseaseState-16','BioSourceType-7']
 parser.add_argument('-rf', '--raw_flag', type=bool, default=False) # `True` use raw data, `False` use pca data
 parser.add_argument('-dm', '--dimension', type=int,default=22283)
-parser.add_argument('-ne', '--n_estimators', type=int,default=10)
-parser.add_argument('-md', '--max_depth', type=int, default=20)
-parser.add_argument('-msplit', '--min_samples_split', type=int, default=2)
-parser.add_argument('-mleaf', '--min_samples_leaf', type=int, default=1)
+parser.add_argument('-C', '--C', type=float, default=1)
+parser.add_argument('-p', '--penalty', type=str, default='l2')
+parser.add_argument('-svl', '--solver', type=str, default='sag')
+#  {'newton-cg', 'lbfgs', 'sag', 'saga'},
+
 # save args
 args = parser.parse_args()
 
 # configuration
-kernel_list=[ 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
 task_list=['MaterialType-2','Sex-2','DiseaseState-16','BioSourceType-7']
 param={
-    'n_estimators':args.n_estimators,
-    'max_features':'sqrt',
-    'max_depth':args.max_depth,
-    'min_samples_split':args.min_samples_split,
-    'min_samples_leaf':args.min_samples_leaf,
+    'C':args.C,
+    'penalty':args.penalty,
+    'solver':args.solver,
+
+    'max_iter': 100,
+    'multi_class': 'multinomial',
     'n_jobs': -1,
     'random_state':1,
 }
@@ -76,7 +77,7 @@ for train_index, test_index in kf.split(X):
     X_train, X_test = X[train_index], X[test_index]
     y_train, y_test = y[train_index], y[test_index]
 
-    clf= RandomForestClassifier(**param)
+    clf= LogisticRegression(**param)
     clf.fit(X, y)
 
     clf.fit(X_train, y_train)
@@ -91,7 +92,7 @@ print 'avg macro f1', sum(macro_f1)/len(macro_f1)
 print 'avg micro f1', sum(micro_f1)/len(micro_f1)
 
 
-with open('./../log/rf.csv', 'a') as fout:
+with open('./../log/LR.csv', 'a') as fout:
     fout.write(task_name+',')
     if raw_flag:
         fout.write('use raw data,')
