@@ -122,7 +122,7 @@ def pre_model4(pre_train_dim,weight):
 	return model
 '''
 def pre_train(x_train , x_test):
-	batch_size_now=5
+	batch_size_now=100
 	weights=[]
 	model_hidden1=pre_model1(pre_train_dim)
 	model_hidden1.compile(loss='mse', optimizer='adam')
@@ -164,12 +164,13 @@ def pre_train(x_train , x_test):
 	return weights
 
 if __name__ == '__main__':
-	os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-	os.system('echo $CUDA_VISIBLE_DEVICES')
-	config = tf.ConfigProto()
-	config.gpu_options.allow_growth = True
-	session = tf.Session(config=config)
-	KTF.set_session(session)
+	os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+	# os.system('echo $CUDA_VISIBLE_DEVICES')
+	# config = tf.ConfigProto(device_count={"CPU":16},
+  # inter_op_parallelism_threads=1,
+  # intra_op_parallelism_threads=1,)
+	# session = tf.Session(config=config)
+	# KTF.set_session(session)
 
 
 

@@ -4,29 +4,33 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import f1_score
 from sklearn import random_projection
+import argparse
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-k', '--kernel', type=int,default=0)  # kernel_list=[ 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
+parser.add_argument('-dgr', '--degree', type=int,default=3)
+parser.add_argument('-t', '--task_num', type=int,default=0) # task_list=['MaterialType-2','Sex-2','DiseaseState-16','BioSourceType-7']
+parser.add_argument('-rf', '--raw_flag', type=bool, default=False) # `True` use raw data, `False` use pca data
+parser.add_argument('-dm', '--dimension', type=int,default=22283)
+parser.add_argument('-gm', '--gamma', type=float, default=0.001)
+
+# save args
+args = parser.parse_args()
 
 # configuration
 kernel_list=[ 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
-# kernel=kernel_list[0]
-# degree=3
+task_list=['MaterialType-2','Sex-2','DiseaseState-16','BioSourceType-7']
+
 param={
-    'kernel':kernel_list[0],
-    'degree':3
+    'kernel':kernel_list[args.kernel],
+    'degree':args.degree,
+    'gamma':args.gamma
 }
-
-
-
-
-# raw_flag=True
+task_name=task_list[args.task_num]
 raw_flag=False
-
-# dimension=500
-dimension=1000
-# dimension=2000
-# dimension=2000 #0.999
-# dimension=22283
-
+print 'raw_flag',raw_flag
+dimension=args.dimension
 
 
 
@@ -38,25 +42,29 @@ if raw_flag:
 else:
     X = np.load("./../data/all_PCA_"+str(dimension)+".npy")
 
-
+# todo another way to decrease dimension
 # transformer = random_projection.SparseRandomProjection()
 # X = transformer.fit_transform(X)
 
-task_name='BioSourceType-7'
+# load label
 label_df = pd.read_csv('./../data/all_label.csv')
 y = np.array(label_df[task_name].tolist())
 y_mask=np.zeros([y.shape[0],])
 y_mask=(y!=y_mask)
-y=y[y_mask]
 
+# mask data
+y=y[y_mask]
 X = X[y_mask]
 
 
-print X.shape
+print 'data shape:',X.shape
+
 # split data random_state=1
 kf = KFold(n_splits=5,random_state=1,shuffle=True)
 kf.get_n_splits(X)
 print(kf)
+
+# store f1
 macro_f1=[]
 micro_f1=[]
 
@@ -75,6 +83,7 @@ for train_index, test_index in kf.split(X):
     micro_f1.append(f1_score(y_test, y_pred, average='micro'))
     print 'macro f1', f1_score(y_test, y_pred, average='macro')
     print 'micro f1', f1_score(y_test, y_pred, average='micro')
+
 print 'avg macro f1', sum(macro_f1)/len(macro_f1)
 print 'avg micro f1', sum(micro_f1)/len(micro_f1)
 
@@ -87,3 +96,15 @@ with open('./../log/svm.log','a') as fout:
     fout.write('dimension=' + str(dimension) + '\n')
     fout.write('avg macro f1='+str(sum(macro_f1) / len(macro_f1))+'\n')
     fout.write('avg micro f1='+str(sum(micro_f1) / len(micro_f1))+'\n')
+
+with open('./../log/svm.csv', 'a') as fout:
+    fout.write(task_name+',')
+    if raw_flag:
+        fout.write('use raw data,')
+    else:
+        fout.write('use PCA data,')
+    for key in param:
+        fout.write(key+':'+str(param[key])+',')
+    fout.write(str(dimension) + ',')
+    fout.write(str(sum(macro_f1) / len(macro_f1)) + ',')
+    fout.write(str(sum(micro_f1) / len(micro_f1)) + ',\n')
