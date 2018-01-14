@@ -73,14 +73,22 @@
 	}
 	\email{felixwzh@sjtu.edu.cn}
 	
-
+	\author{Ruijie Wang}
+	\affiliation{%
+		\institution{Shanghai Jiao Tong University}
+		\city{515021910338} 
+		%		\state{China} 
+		\postcode{200240}
+	}
+	\email{Wjerry5@sjtu.edu.cn}
+	
 	
 	% The default list of authors is too long for headers.
 	\renewcommand{\shortauthors}{Zhenghui Wang}
 	
 	
 	\begin{abstract}
-		In this report, we first explain the basics of several traditional and deep machine learning models. We then  
+		In recent years, artificial intelligence (AI) is becoming more and more important in human society. As a booming trend in AI, deep learning (DL) has attracted both academic and industrial attention. Thus, how DL and other traditional machine learning methods differs is an important problem. In this report, we first explain the basics of several traditional and deep machine learning models. We then conduct extensive experiments on the Human Gene Expression Dataset and compare the difference between the approaches. We also make some visualization and analysis.
 	
 	\end{abstract}
 	
@@ -124,10 +132,6 @@
 	
 	
 	\maketitle
-	
-	
-	\section{Introduction}
-	
 	
 	\section{Models}
 	In this section, we briefly introduce the models we leveraged in this project, from traditional machine learning models (SVM, LR, random forest) to deep models (deep neural networks and deep forest). And we conduct extensive experiments on the Human Gene Expression Dataset.
@@ -290,7 +294,9 @@ For a variety of tasks, deep learning \cite{Deeplearning} has been shown as a su
 	For weight initialization, we initialize each neurons weight vector as a random vector sampled from a multi-dimensional gaussian. For bias initialization, we set all the bias vectors to $0$. We initialize our weight with the consideration that the size of our network is limited and it can be trained easily according to the network \romannumeral2.
 	
 	\item \textbf{NN on raw data}\\
-	In this model, we use the raw data as the network inputs. Then we add hidden layer1(8192-dimension), hidden layer2(512-dimension), hidden layer3(128-dimension), finally a output layer.  The structure is shown as Figure~\ref{nn_1} network \romannumeral2. Since we did not use the low-dimension data, the training become much harder according to out experiment. So the network initialization is very import. We use greedy layer-wise pre training , which is a pre-train method based on the idea of autoencoder, to initialize the network. 
+	In this model, we use the raw data as the network inputs. Then we add hidden layer1 (8192-dimension), hidden layer2 (512-dimension), hidden layer3 (128-dimension), and finally a output layer.  The structure is shown as Figure~\ref{nn_1} network \romannumeral2. 
+	
+	The training become much harder according to out experiment, since we the original high dimension data,  and the network initialization is very important. We use a pre-train method based on the idea of autoencoder, namely \textbf{greedy layer-wise pre training}, to initialize the network parameters. 
 \end{itemize}
 
 \begin{figure}[!ht]
@@ -303,12 +309,12 @@ For a variety of tasks, deep learning \cite{Deeplearning} has been shown as a su
 \end{figure}
 
 \subsubsection{Regularization}
-We use L2 regularization in each fullt-connected layer.It can be implemented by penalizing the squared magnitude of all parameters directly in the objective. For every weight $w$ in the network, we add the term $1/2\lambda w^2$ to the objective, where $\lambda$ is the regularization strength. This can help control the capacity of neural networks to prevent overfitting.
-
-Furthermore, we employ Dropout \cite{Dropout} to prevent overfit- ting. While training, dropout is implemented by only keep- ing a neuron active with some probability p, or setting it to zero otherwise.
+We use L2 regularization in each fullt-connected layer. We add the term $1/2\lambda w^2$ to the objective function for each weight $w$ in the network, where $\lambda$ is the regularization strength coefficient, which is a explicit approach to control the capacity of neural networks and prevent overfitting.
+ 
+Furthermore, we also employ dropout technique \cite{Dropout} to prevent overfitting risk. During training, dropout is implemented by only keeping a neuron active with some probability $p$, or setting it to zero otherwise.
 
 \subsubsection{Pre-train}
-In network \romannumeral2, the training get very hard because of the high dimension of the network. We use \textbf{greedy layer-wise pre training} to pre-train. It will determine the initial weights of each layer layer by layer with the idea of autoencoder. Since each layer has been local optimal solution, the training get much easier .
+In network \romannumeral2, it is hard to train a high-performance NN because of the high dimension problem. We use \textbf{greedy layer-wise pre training} to pre-train. It will determine the initial weights of each layer in a layer-by-layer way with the idea of autoencoder. Since each layer has been locally optimized, the training get much easier .
 
 More specifically, to determine weights of first hidden layer, we use the network shown as Figure~\ref{auto_1}. Once we get $X=h_{\omega,b}(X)$, it means the hidden layer can encode the input properly, at the same time it can pass these extracted feature to the following layer. Seemingly, when we initialize the second hidden layer, we use the output of the first hidden layer as the input of network in Figure~\ref{auto_1}. Thus we can determine all the weights. The process is show as Figure~\ref{pretrain_1}. The network \romannumeral4  in  Figure~\ref{pretrain_1} is we want, so to determine the 3 layers weights, we use network \romannumeral1-network \romannumeral3 (which are same as  Figure~\ref{auto_1}) to train them.
 
@@ -363,15 +369,15 @@ More specifically, to determine weights of first hidden layer, we use the networ
 	\end{table}
 	
 	
-	Besides, we visualize the given data with selected labels into 2-D figure using PCA method, which is shown in Figure~\ref{distribution_1}. By observation, data with Bio-7 label, Material-2 label and Disease-16 have clear boundary while it is very hard to identify the data with Sex-2 label in 2-D space.
+	Besides, we visualize the given data with selected labels into 2-D figure using PCA method, which is shown in Figure~\ref{distribution_1}. By observation, data with BioSourceType label, MaterialType label and DiseaseState have clear boundary while it is very hard to identify the data with Sex label in 2-D space.
 
 	\begin{figure}[]
 		\centering
-		\includegraphics[width=0.2\textwidth]{../figs/Material-2.pdf}
-		\includegraphics[width=0.2\textwidth]{../figs/Sex-2.pdf}
-		\includegraphics[width=0.2\textwidth]{../figs/Disease-16.pdf}
-		\includegraphics[width=0.2\textwidth]{../figs/Bio-7.pdf}
-		\caption{a.Material-2 Distribution;  b, Sex-2 Distribution2; c, Disease-16 Distribution; d,Bio-7 Distribution (From top to down). }
+		\includegraphics[width=0.4\textwidth]{../figs/Material-2.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/Sex-2.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/Disease-16.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/Bio-7.pdf}
+		\caption{a.MaterialType Distribution;  b, Sex Distribution2; c, DiseaseState Distribution; d,Bio-7 Distribution (From top to down). }
 		\label{distribution_1}
 		\centering
 	\end{figure}
@@ -438,7 +444,7 @@ The experiment results and analysis will be presented in this section.
 
 
 \subsection{Logistic Regression} 
-We apply logistic regression to four task. Besides, we try different regularization method and solver  with different regularization strength C . We want to choose the best parameter settings and compare the preformence of different regularization method and solver. The result with the change of C is shown as Figure~\ref{lr_result1}. It can be seen that the performance of LR did not vary too much with the change of C, which may mean the data distribution is ideal and the  regularization of this model is not necessary.
+We apply logistic regression to 4 task. Different regularization method and solver with different regularization strength $C$ are evaluated. We want tofind the best parameter settings. And we also make comparison between the preformence of different regularization method and solver. The result of $C$'s influence is shown in Figure~\ref{lr_result1}. It can be inferred that the performance of LR is not sensitive to $C$, which may mean the data distribution is ideal.
 
 \begin{figure}[!ht]
 	\centering
@@ -448,7 +454,7 @@ We apply logistic regression to four task. Besides, we try different regularizat
 	\centering
 \end{figure}
 
-And the best results on 4 tasks with selected parameters is shown in Table~\ref{lr_result2}.
+The best results on 4 tasks with selected parameters is shown in Table~\ref{lr_result2}.
 
 \begin{table}[tbp]
 	\centering
@@ -587,7 +593,7 @@ We find that when applied on 4 different tasks, the final levels of deep forest 
 		{\textit{BioSourceType}}& 98.62 &5\\
 		\bottomrule	
 	\end{tabular}
-	\caption{Best parameter settings for random forest model. }
+	\caption{Best parameter settings for deep forest model. }
 	\label{tab:DeepForest}
 \end{table}
 
@@ -613,44 +619,66 @@ At first we try deep neural network on   PCA-processed data. The dimension is 50
 		\label{nnpca_result}
 	\end{table}
 	
-	Besides, we visualize the training process of Sex and Bio tasks with the change of learning. It is shown in Figure~\ref{lr_result}, and it can be seen $lr=0.001$ is the best result in four task. 
+	Besides, we visualize the training process of Sex and BioSourceType tasks with the change of learning. It is shown in Figure~\ref{lr_result}, and it can be seen when $lr=0.001$ we get the best result in four task. 
 	
 	\begin{figure}[]
 		\centering
-		\includegraphics[width=0.2\textwidth]{../figs/lr_acc_bio.pdf}
-		\includegraphics[width=0.2\textwidth]{../figs/lr_acc_sex.pdf}
-		\includegraphics[width=0.2\textwidth]{../figs/lr_loss_bio.pdf}
-		\includegraphics[width=0.2\textwidth]{../figs/lr_loss_sex.pdf}
-		\caption{a.accuracy in Bio task;  b, accuracy in Sex task; c, loss in Bio task; d, loss in Sex task (From left to right and top to down). }
+		\includegraphics[width=0.4\textwidth]{../figs/lr_acc_bio.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/lr_acc_sex.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/lr_loss_bio.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/lr_loss_sex.pdf}
+		\caption{a.accuracy in BioSourceType task;  b, accuracy in Sex task; c, loss in BioSourceType task; d, loss in Sex task (From top to down). }
 		\label{lr_result}
 		\centering
 	\end{figure}
 	
 	
 	\subsubsection{ NN on raw data}
-	To improve the NN' performance, we try deep neural network on  raw data. Because it is a nonlinear classifier, it may solve the relevant of raw data feature by itself. The dimension is 22283, and the network is shown in Figure~\ref{nn_1}. The setting of L2 regularization, dropout and batch normalization is same as the above experiment. But without the proper initialization (e.g. random initialization), the performance is not better than NN above. On the contrary, the accuracy is only at around 70\%, for it is easily influenced by local optimization. So we use greedy layer-wise pre training method to initialize the weights using 3 different neural network (which have the same structure as autoencoder) . Then the performance is improved a lot, besides the train process becoming faster. The best result and seleted parameters is shown in Table~{\ref{nnraw_result}.\\
+	To improve the NN's performance, we try deep neural network on raw data. Because it is a nonlinear classifier, it may solve the relevant of raw data feature by itself. The dimension is 22283, and the network is shown in Figure~\ref{nn_1}. The setting of L2 regularization, dropout and batch normalization is same as the above experiment. But without the proper initialization (e.g. random initialization), the performance is not better than the NN above. On the contrary, the accuracy is only at around 70\%, for it is easily influenced by a local minima. So we use greedy layer-wise pre training method to initialize the weights using 3 different neural network (which have the same structure as autoencoder). Then the performance is improved a lot, besides the train process becoming faster. The best result and seleted parameters is shown in Table~{\ref{nnraw_result}.\\
 			
-			\begin{table}[tbp]
-				\centering
-				\begin{tabular}{l|cccc}
-					\toprule
-					{Label Type} & $F_1 (\%)$ & learning rate &$batch size$  \\
-					\midrule
-					{\textit{MaterialType}}&99.78 & 0.001 &32\\
-					{\textit{Sex}}		& 92.41 & 0.01    &50 \\
-					{\textit{DiseaseState}}& 94.37 & 0.001 &32\\
-					{\textit{BioSourceType}}& 98.35 & 0.001 &32\\
-					\bottomrule	
-				\end{tabular}
-				
-				\caption{Best results and parameter settings for NN model on raw data. }
-				\label{nnraw_result}
-			\end{table}
-			
-			Compared with Table~\ref{nnpca_result}, it can be seen that MaterialType task and BioSourceType task has been improved, but the Sex task and DiseaseState task did not become higher. Besides, there are some differences among the optimal parameters. 
+\begin{table}[tbp]
+\centering
+\begin{tabular}{l|cccc}
+\toprule
+{Label Type} & $F_1 (\%)$ & learning rate &$batch size$  \\
+\midrule
+{\textit{MaterialType}}&99.78 & 0.001 &32\\
+{\textit{Sex}}		& 92.41 & 0.01    &50 \\
+{\textit{DiseaseState}}& 94.37 & 0.001 &32\\
+{\textit{BioSourceType}}& 98.35 & 0.001 &32\\
+\bottomrule	
+\end{tabular}
 
+\caption{Best results and parameter settings for NN model on raw data. }
+\label{nnraw_result}
+\end{table}
 
+Compared with Table~\ref{nnpca_result}, it can be seen that MaterialType task and BioSourceType task has been improved, but the Sex task and DiseaseState task did not become higher. Besides, there are some differences among the optimal parameters. 
 
+\subsection{Comparison}
+Among all the experiment results above, we can make a thorough comparison between different approaches. The best results and the according approach for each task is shown in Tabel~\ref{comp}. Although the 3 approaches list in Tabel~\ref{comp} are all traditional or ensemble methods, it's very impressive that deep forest reached the best result in DiseaseState task. This shows that deep forest is somehow useful and might be more powerful in some more difficult dataset. And also that the dataset is quite linear separable for those traditional approaches get high performance.
+
+It's shown that, our NN model doesn't reach the best result in any of the 4 tasks. We think this is because the dataset is not very hard for the traditional approaches to get a high $F_1$-score and the training of NN is still not easy. Although we leverages several techniques to improve the performance of NN (and we did improve it a lot), there are still many things left to further improve the performance. 
+
+We believe that if we have some much more difficult dataset, NN might outperforme the traditional approached more significantly. Also, we should not ignore the important role of deep forest.
+\begin{table}[tbp]
+\centering
+\begin{tabular}{l|cc}
+	\toprule
+	{Label Type} & $F_1 (\%)$ & Approach  \\
+	\midrule
+	{\textit{MaterialType}}&99.86 & logistic regression\\
+	{\textit{Sex}}		& 95.44 & support vector machine  \\
+	{\textit{DiseaseState}}& 95.58 & deep forest \\
+	{\textit{BioSourceType}}& 98.76 & support vector machine \\
+	\bottomrule	
+\end{tabular}
+\caption{The best results and the according approach for each task. }
+\label{comp}
+\end{table}
+
+\section{Conclusion}
+In this report, extensive experiments on the Human Gene Expression Dataset shows that in such `good' dataset, the difference between approaches are not very significant. But deep neural network does outperforms than many traditional approaches, and we find that a good parameter initialization plays an important role in deep learning. We believe that deep neural network will be much more powerful if it is trained in a suitable way. Though some of the theories in deep learning are still not very clear, we will try to do more research work in this direction, wishing to unveil the mysterious yashmak of deep learning.
 
 	\begin{acks}
 	This work is successfully produced thanks to the kind guidance from and discussion with Prof. Bo Yuan.
