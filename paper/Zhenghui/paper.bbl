@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{17}
+\begin{thebibliography}{19}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -170,6 +170,19 @@
 \newblock
 
 
+\bibitem[\protect\citeauthoryear{N.~Srivastava and Salakhutdinov}{N.~Srivastava
+  and Salakhutdinov}{2014}]%
+        {Dropout}
+\bibfield{author}{\bibinfo{person}{A.~Krizhevsky I.~Sutskever N.~Srivastava,
+  G.~Hinton} {and} \bibinfo{person}{R. Salakhutdinov}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Dropout: A simple way to prevent neural networks
+  from overfitting}.
+\newblock \bibinfo{journal}{{\em The Journal of Machine Learning Research\/}}
+  \bibinfo{volume}{15(1)} (\bibinfo{year}{2014}), \bibinfo{pages}{1929--1958}.
+\newblock
+
+
 \bibitem[\protect\citeauthoryear{Ng}{Ng}{2011}]%
         {ng2011sparse}
 \bibfield{author}{\bibinfo{person}{Andrew Ng}.}
@@ -207,6 +220,17 @@
 \newblock \bibinfo{journal}{{\em IEEE transactions on systems, man, and
   cybernetics\/}} \bibinfo{volume}{21}, \bibinfo{number}{3}
   (\bibinfo{year}{1991}), \bibinfo{pages}{660--674}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Y.~LeCun and Hinton}{Y.~LeCun and
+  Hinton}{2015}]%
+        {Deeplearning}
+\bibfield{author}{\bibinfo{person}{Y.~Bengio Y.~LeCun} {and}
+  \bibinfo{person}{G. Hinton}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Deep learning}.
+\newblock \bibinfo{journal}{{\em nature\/}}  \bibinfo{volume}{521(7553)}
+  (\bibinfo{year}{2015}), \bibinfo{pages}{436}.
 \newblock
 
 

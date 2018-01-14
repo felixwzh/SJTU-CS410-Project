@@ -80,6 +80,7 @@
 	
 	
 	\begin{abstract}
+		In this report, we first explain the basics of several traditional and deep machine learning models. We then  
 	
 	\end{abstract}
 	
@@ -129,7 +130,7 @@
 	
 	
 	\section{Models}
-	In this section, we briefly introduce the models we leveraged in this project, from traditional machine learning models (SVM, LR, random forest) to deep models (deep neural networks and deep forest).
+	In this section, we briefly introduce the models we leveraged in this project, from traditional machine learning models (SVM, LR, random forest) to deep models (deep neural networks and deep forest). And we conduct extensive experiments on the Human Gene Expression Dataset.
 	
 	
 	\subsection{Logistic Regression}
@@ -278,17 +279,17 @@ An autoencoder neural network \cite{ng2011sparse} is an unsupervised learning al
 Now suppose we have  a set of unlabeled training examples $X=[x_1,x_2,x_3,\dots]$, we want $X=H_{W,b}(X)$. Then the lower-dimension output of hidden layer $L_2$ is the encoder of the raw data. This output is a nonlinear dimensionality reduction, which may overcome the weakness of PCA that it is only a linear dimensionality reduction method.
 
 
-\subsection{Deep Learing Based Methods}
-Deep learning has been shown as a successful machine learning method for a variety of tasks. In our work, we use a deep neural network with fully-connected multilayer structure both on PCA-processed data and on raw data with \textbf{greedy layer-wise pre training}. Besides, we add L2 regularization in each fully-connected layer to avoid overfitting and control the model complexity.
+\subsection{Deep Neural Network}
+Deep learning \cite{Deeplearning} has been shown as a successful machine learning method for a variety of tasks. In our work, we use a deep neural network with fully-connected multilayer structure both on PCA-processed data and on raw data with \textbf{greedy layer-wise pre training}. Besides, we add L2 regularization in each fully-connected layer to avoid overfitting and control the model complexity.
 \subsubsection{network structure} Since the features do not have any locality or direct relationship, we don¡¯t use convolutions.\\
 
 \begin{itemize}
-	\item \textbf{nn on pca-processed data}\\
-	In this model, firstly we use pca-processed data (500-dimension) as our network input. Then we add hidden layer1(256-dimension), hidden layer2(512-dimension), hidden layer3(256-dimension), finally a output layer.  The structure is shown as Fig(\ref{nn_1}) network \romannumeral1. 
+	\item \textbf{NN on PCA-processed data}\\
+	In this model, firstly we use pca-processed data (500-dimension) as our network input. Then we add hidden layer1(256-dimension), hidden layer2(512-dimension), hidden layer3(256-dimension), finally a output layer.  The structure is shown as Figure~\ref{nn_1} network \romannumeral1. 
 	For weight initialization, we initialize each neurons weight vector as a random vector sampled from a multi-dimensional gaussian. For bias initialization, we set the bias vectors all to $0$. We initialize our weight with the consideration that the size of our network is limited and it can be trained easily according to the network \romannumeral2.
 	
-	\item \textbf{nn on raw data}\\
-	In this model, we use the raw data as the network inputs. Then we add hidden layer1(8192-dimension), hidden layer2(512-dimension), hidden layer3(128-dimension), finally a output layer.  The structure is shown as Fig(\ref{nn_1}) network \romannumeral2. Since we did not use the low-dimension data, the training become much harder according to out experiment. So the network initialization is very import. We use greedy layer-wise pre training , which is a pre-train method based on the idea of autoencoder, to initialize the network. 
+	\item \textbf{NN on raw data}\\
+	In this model, we use the raw data as the network inputs. Then we add hidden layer1(8192-dimension), hidden layer2(512-dimension), hidden layer3(128-dimension), finally a output layer.  The structure is shown as Figure~\ref{nn_1} network \romannumeral2. Since we did not use the low-dimension data, the training become much harder according to out experiment. So the network initialization is very import. We use greedy layer-wise pre training , which is a pre-train method based on the idea of autoencoder, to initialize the network. 
 \end{itemize}
 
 \begin{figure}[!ht]
@@ -303,14 +304,14 @@ Deep learning has been shown as a successful machine learning method for a varie
 \subsubsection{Regularization}
 We use L2 regularization in each fullt-connected layer.It can be implemented by penalizing the squared magnitude of all parameters directly in the objective. For every weight $w$ in the network, we add the term $1/2¦Ëw$ to the objective, where ¦Ë is the regularization strength. This can help control the capacity of neural networks to prevent overfitting.
 
-Furthermore, we employ Dropout to prevent overfit- ting. While training, dropout is implemented by only keep- ing a neuron active with some probability p, or setting it to zero otherwise.
+Furthermore, we employ Dropout \cite{Dropout} to prevent overfit- ting. While training, dropout is implemented by only keep- ing a neuron active with some probability p, or setting it to zero otherwise.
 
 \subsubsection{Pre-train}
 In network \romannumeral2, the training get very hard because of the high dimension of the network. We use \textbf{greedy layer-wise pre training} to pre-train. It will determine the initial weights of each layer layer by layer with the idea of autoencoder. Since each layer has been local optimal solution, the training get much easier .
 
-More specifically, to determine weights of first hidden layer, we use the network shown as Fig(\ref{auto_1}). Once we get $X=h_{\omega,b}(X)$, it means the hidden layer can encode the input properly, at the same time it can pass these extracted feature to the following layer. Seemingly, when we initialize the second hidden layer, we use the output of the first hidden layer as the input of network in Fig(\ref{auto_1}). Thus we can determine all the weights. The process is show as Fig(\ref{pretrain_1}). The network \romannumeral4  in  Fig(\ref{pretrain_1}) is we want, so to determine the 3 layers weights, we use network \romannumeral1-network \romannumeral3 (which are same as  Fig(\ref{auto_1})) to train them.
+More specifically, to determine weights of first hidden layer, we use the network shown as Figure~\ref{auto_1}. Once we get $X=h_{\omega,b}(X)$, it means the hidden layer can encode the input properly, at the same time it can pass these extracted feature to the following layer. Seemingly, when we initialize the second hidden layer, we use the output of the first hidden layer as the input of network in Figure~\ref{auto_1}. Thus we can determine all the weights. The process is show as Figure~\ref{pretrain_1}. The network \romannumeral4  in  Figure~\ref{pretrain_1} is we want, so to determine the 3 layers weights, we use network \romannumeral1-network \romannumeral3 (which are same as  Figure~\ref{auto_1}) to train them.
 
-\begin{figure}[!ht]
+\begin{figure}[]
 	\centering
 	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain1.png}
 	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain2.png}
@@ -359,6 +360,20 @@ More specifically, to determine weights of first hidden layer, we use the networ
 		\caption{ Statistics of the 4 labels used in our experiments. }
 		\label{tab:label}
 	\end{table}
+	
+	
+	Besides, we visualize the given data with selected labels into 2-D figure using PCA method, which is shown in Figure~\ref{distribution_1}. By observation, data with Bio-7 label, Material-2 label and Disease-16 have clear boundary while it is very hard to identify the data with Sex-2 label in 2-D space.
+
+	\begin{figure}[]
+		\centering
+		\includegraphics[width=0.4\textwidth]{../figs/Material-2.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/Sex-2.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/Disease-16.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/Bio-7.pdf}
+		\caption{a.Material-2 Distribution;  b, Sex-2 Distribution2; c, Disease-16 Distribution; d,Bio-7 Distribution}
+		\label{distribution_1}
+		\centering
+	\end{figure}
 	
 	\subsection{Experiment Details}
 	\subsubsection{Cross Validation}
@@ -419,6 +434,37 @@ More specifically, to determine weights of first hidden layer, we use the networ
 	
 \section{Results \& Analysis}
 The experiment results and analysis will be presented in this section.
+
+
+\subsection{Logistic Regression} 
+We apply logistic regression to four task. Besides, we try different regularization method and solver  with different regularization strength C . We want to choose the best parameter settings and compare the preformence of different regularization method and solver. The result with the change of C is shown as Figure~\ref{lr_result1}. It can be seen that the performance of LR did not vary too much with the change of C, which may mean the data distribution is ideal and the  regularization of this model is not necessary.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.4\textwidth]{../figs/LR_C.pdf}
+	\caption{The performance of LR in 4 tasks with different regularization strength.}
+	\label{lr_result1}
+	\centering
+\end{figure}
+
+And the best results on 4 tasks with selected parameters is shown in Table~\ref{lr_result2}.
+
+\begin{table}[tbp]
+	\centering
+	\begin{tabular}{l|cccc}
+		\toprule
+		{Label Type} & $F_1 (\%)$ & C &solver &penalty \\
+		\midrule
+		{\textit{MaterialType}}&99.86 & 4 &lbfgs & l2\\
+		{\textit{Sex}}		& 94.96 & 0.001    &sag & l2 \\
+		{\textit{DiseaseState}}& 95.72 & 0.001 &lbfgs & l2\\
+		{\textit{BioSourceType}}& 98.42 & 0.01 &lbfgs & l2\\
+		\bottomrule	
+	\end{tabular}
+	
+	\caption{Best results and parameter settings for Logistic Regression. }
+	\label{lr_result2}
+\end{table}
 
 \subsection{SVM}
 We try different kernels (polynomial, RBF and sigmoid) with different $C$ and $\gamma$ for SVM model, because we want to find not only the best parameter settings but also how the parameters influence the model performance. 
@@ -537,12 +583,71 @@ We find that when applied on 4 different tasks, the final levels of deep forest 
 		{\textit{MaterialType}}&99.83 &5\\
 		{\textit{Sex}}		& 92.90  &9\\
 		{\textit{DiseaseState}}& 95.58 &8 \\
-		{\textit{BioSourceType}}& 98.62 &?\\
+		{\textit{BioSourceType}}& 98.62 &5\\
 		\bottomrule	
 	\end{tabular}
 	\caption{Best parameter settings for random forest model. }
 	\label{tab:DeepForest}
 \end{table}
+
+\subsection{Deep Learning based Method}
+
+\subsubsection{ NN on PCA-processed data}
+At first we try deep neural network on   pca-processed data. The dimension is 500, and the network is shown in Figure~\ref{nn_1}. Besides,  we use L2 regularization and dropout to avoid overfitting. The dropout rate is 0.50. In the end, we use batch normalization in each layer and it greatly improves the performance. The results and selected parameters are shown in Table~\ref{nnpca_result}.
+	
+	\begin{table}[tbp]
+		\centering
+		\begin{tabular}{l|cccc}
+			\toprule
+			{Label Type} & $F_1 (\%)$ & learning rate &$batch size$  \\
+			\midrule
+			{\textit{MaterialType}}&99.30 & 0.001 &32\\
+			{\textit{Sex}}		& 92.92 & 0.001    &50 \\
+			{\textit{DiseaseState}}& 94.38 & 0.001 &32\\
+			{\textit{BioSourceType}}& 95.87 & 0.001 &16\\
+			\bottomrule	
+		\end{tabular}
+		
+		\caption{Best results and parameter settings for nn model on pca data. }
+		\label{nnpca_result}
+	\end{table}
+	
+	Besides, we visualize the training process of Sex and Bio tasks with the change of learning. It is shown in Figure~\ref{lr_result}, and it can be seen $lr=0.001$ is the best result in four task. 
+	
+	\begin{figure}[]
+		\centering
+		\includegraphics[width=0.4\textwidth]{../figs/lr_acc_bio.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/lr_acc_sex.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/lr_loss_bio.pdf}
+		\includegraphics[width=0.4\textwidth]{../figs/lr_loss_sex.pdf}
+		\caption{a.accuracy in Bio task;  b, accuracy in Sex task; c, loss in Bio task; d, loss in Sex task}
+		\label{lr_result}
+		\centering
+	\end{figure}
+	
+	
+	\subsubsection{ NN on raw data}
+	To improve the NN' performance, we try deep neural network on  raw data. Because it is a nonlinear classifier, it may solve the relevant of raw data feature by itself. The dimension is 22283, and the network is shown in Figure~\ref{nn_1}. The setting of L2 regularization, dropout and batch normalization is same as the above experiment. But without the proper initialization (e.g. random initialization), the performance is not better than NN above. On the contrary, the accuracy is only at around 70\%, for it is easily influenced by local optimization. So we use greedy layer-wise pre training method to initialize the weights using 3 different neural network (which have the same structure as autoencoder) . Then the performance is improved a lot, besides the train process becoming faster. The best result and seleted parameters is shown in Table~{\ref{nnraw_result}.\\
+			
+			\begin{table}[tbp]
+				\centering
+				\begin{tabular}{l|cccc}
+					\toprule
+					{Label Type} & $F_1 (\%)$ & learning rate &$batch size$  \\
+					\midrule
+					{\textit{MaterialType}}&99.78 & 0.001 &32\\
+					{\textit{Sex}}		& 92.41 & 0.01    &50 \\
+					{\textit{DiseaseState}}& 94.37 & 0.001 &32\\
+					{\textit{BioSourceType}}& 98.35 & 0.001 &32\\
+					\bottomrule	
+				\end{tabular}
+				
+				\caption{Best results and parameter settings for NN model on raw data. }
+				\label{nnraw_result}
+			\end{table}
+			
+			Compared with Table~\ref{nnpca_result}, it can be seen that MaterialType task and BioSourceType task has been improved, but the Sex task and DiseaseState task did not become higher. Besides, there are some differences among the optimal parameters. 
+
 
 
 

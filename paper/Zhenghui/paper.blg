@@ -10,9 +10,39 @@ Repeated entry---line 235 of file bibliography.bib
  :                      ,
 I'm skipping whatever remains of this entry
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 3085 of file ACM-Reference-Format.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 3085 of file ACM-Reference-Format.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 3085 of file ACM-Reference-Format.bst
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 3085 of file ACM-Reference-Format.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 3085 of file ACM-Reference-Format.bst
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 3085 of file ACM-Reference-Format.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 3085 of file ACM-Reference-Format.bst
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 3085 of file ACM-Reference-Format.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 3085 of file ACM-Reference-Format.bst
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 3146 of file ACM-Reference-Format.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 3146 of file ACM-Reference-Format.bst
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 3146 of file ACM-Reference-Format.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 3146 of file ACM-Reference-Format.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 3146 of file ACM-Reference-Format.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 3146 of file ACM-Reference-Format.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty address in breiman1984classification
 Warning--empty publisher in cristianini1999introduction
@@ -25,48 +55,66 @@ Warning--empty address in hosmer2013applied
 Warning--empty publisher in liu2005one
 Warning--empty address in liu2005one
 Warning--page numbers missing in both pages and numpages fields in madzarov2009multi
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 3244 of file ACM-Reference-Format.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 3244 of file ACM-Reference-Format.bst
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 3244 of file ACM-Reference-Format.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 3244 of file ACM-Reference-Format.bst
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 3244 of file ACM-Reference-Format.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 3244 of file ACM-Reference-Format.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 3244 of file ACM-Reference-Format.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 3244 of file ACM-Reference-Format.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 3244 of file ACM-Reference-Format.bst
 Warning--empty address in zhou2012ensemble
 Warning--no number and no volume in zhou2017deep
 Warning--page numbers missing in both pages and numpages fields in zhou2017deep
-You've used 17 entries,
+You've used 19 entries,
             5795 wiz_defined-function locations,
-            1415 strings with 17827 characters,
-and the built_in function-call counts, 19375 in all, are:
-= -- 2537
-> -- 757
+            1430 strings with 18129 characters,
+and the built_in function-call counts, 21904 in all, are:
+= -- 2938
+> -- 833
 < -- 1
-+ -- 255
-- -- 276
-* -- 1379
-:= -- 2056
-add.period$ -- 91
-call.type$ -- 17
-change.case$ -- 118
-chr.to.int$ -- 17
-cite$ -- 31
-duplicate$ -- 1616
-empty$ -- 1145
-format.name$ -- 324
-if$ -- 4677
++ -- 281
+- -- 308
+* -- 1535
+:= -- 2295
+add.period$ -- 101
+call.type$ -- 19
+change.case$ -- 130
+chr.to.int$ -- 19
+cite$ -- 33
+duplicate$ -- 1824
+empty$ -- 1291
+format.name$ -- 364
+if$ -- 5340
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 56
-newline$ -- 173
-num.names$ -- 136
-pop$ -- 603
+missing$ -- 64
+newline$ -- 189
+num.names$ -- 152
+pop$ -- 674
 preamble$ -- 1
-purify$ -- 271
+purify$ -- 301
 quote$ -- 0
-skip$ -- 548
+skip$ -- 623
 stack$ -- 0
-substring$ -- 1346
-swap$ -- 154
+substring$ -- 1532
+swap$ -- 180
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 309
+type$ -- 341
 warning$ -- 14
-while$ -- 137
+while$ -- 157
 width$ -- 0
-write$ -- 326
-(There was 1 error message)
+write$ -- 360
+(There were 25 error messages)
