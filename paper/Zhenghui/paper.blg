@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper.aux
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: bibliography.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty publisher in alom2015intrusion
+Warning--empty address in alom2015intrusion
+Warning--empty publisher in beigi2014towards
+Warning--empty address in beigi2014towards
+Warning--can't use both volume and number fields in javed2013poiroot
+Warning--empty publisher in javed2013poiroot
+Warning--empty address in javed2013poiroot
+Warning--no number and no volume in kwon2017survey
+You've used 13 entries,
+            5795 wiz_defined-function locations,
+            1598 strings with 20874 characters,
+and the built_in function-call counts, 16639 in all, are:
+= -- 2213
+> -- 686
+< -- 0
++ -- 229
+- -- 224
+* -- 1244
+:= -- 1707
+add.period$ -- 67
+call.type$ -- 13
+change.case$ -- 105
+chr.to.int$ -- 13
+cite$ -- 21
+duplicate$ -- 1355
+empty$ -- 958
+format.name$ -- 268
+if$ -- 4081
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 47
+newline$ -- 143
+num.names$ -- 104
+pop$ -- 501
+preamble$ -- 1
+purify$ -- 221
+quote$ -- 0
+skip$ -- 459
+stack$ -- 0
+substring$ -- 1191
+swap$ -- 141
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 278
+warning$ -- 8
+while$ -- 95
+width$ -- 0
+write$ -- 263
+(There were 8 warnings)

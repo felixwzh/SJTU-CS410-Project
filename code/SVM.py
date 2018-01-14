@@ -14,6 +14,7 @@ parser.add_argument('-t', '--task_num', type=int,default=0) # task_list=['Materi
 parser.add_argument('-rf', '--raw_flag', type=bool, default=False) # `True` use raw data, `False` use pca data
 parser.add_argument('-dm', '--dimension', type=int,default=22283)
 parser.add_argument('-gm', '--gamma', type=float, default=0.001)
+parser.add_argument('-c', '--C', type=float, default=1)
 
 # save args
 args = parser.parse_args()
@@ -25,7 +26,8 @@ task_list=['MaterialType-2','Sex-2','DiseaseState-16','BioSourceType-7']
 param={
     'kernel':kernel_list[args.kernel],
     'degree':args.degree,
-    'gamma':args.gamma
+    'gamma':args.gamma,
+    'C':args.C
 }
 task_name=task_list[args.task_num]
 raw_flag=False

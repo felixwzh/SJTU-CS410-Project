@@ -103,3 +103,9 @@ ENV/
 data/
 
 \.idea/
+
+*.out
+
+*.gz
+
+paper/Zhenghui/paper\.pdf

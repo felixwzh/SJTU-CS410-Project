@@ -1,0 +1,208 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{13}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Alom, Bontupalli, and Taha}{Alom
+  et~al\mbox{.}}{2015}]%
+        {alom2015intrusion}
+\bibfield{author}{\bibinfo{person}{Md~Zahangir Alom},
+  \bibinfo{person}{VenkataRamesh Bontupalli}, {and} \bibinfo{person}{Tarek~M
+  Taha}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Intrusion detection using deep belief networks}. In
+  \bibinfo{booktitle}{{\em Aerospace and Electronics Conference (NAECON), 2015
+  National}}. IEEE, \bibinfo{pages}{339--344}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Beigi, Jazi, Stakhanova, and Ghorbani}{Beigi
+  et~al\mbox{.}}{2014}]%
+        {beigi2014towards}
+\bibfield{author}{\bibinfo{person}{Elaheh~Biglar Beigi},
+  \bibinfo{person}{Hossein~Hadian Jazi}, \bibinfo{person}{Natalia Stakhanova},
+  {and} \bibinfo{person}{Ali~A Ghorbani}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Towards effective feature selection in machine
+  learning-based botnet detection approaches}. In \bibinfo{booktitle}{{\em
+  Communications and Network Security (CNS), 2014 IEEE Conference on}}. IEEE,
+  \bibinfo{pages}{247--255}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hou, Chang, Chen, Laih, and Chen}{Hou
+  et~al\mbox{.}}{2010}]%
+        {hou2010malicious}
+\bibfield{author}{\bibinfo{person}{Yung-Tsung Hou}, \bibinfo{person}{Yimeng
+  Chang}, \bibinfo{person}{Tsuhan Chen}, \bibinfo{person}{Chi-Sung Laih}, {and}
+  \bibinfo{person}{Chia-Mei Chen}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{Malicious web content detection by machine
+  learning}.
+\newblock \bibinfo{journal}{{\em Expert Systems with Applications\/}}
+  \bibinfo{volume}{37}, \bibinfo{number}{1} (\bibinfo{year}{2010}),
+  \bibinfo{pages}{55--60}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Javed, Cunha, Choffnes, Katz-Bassett,
+  Anderson, and Krishnamurthy}{Javed et~al\mbox{.}}{2013}]%
+        {javed2013poiroot}
+\bibfield{author}{\bibinfo{person}{Umar Javed}, \bibinfo{person}{Italo Cunha},
+  \bibinfo{person}{David Choffnes}, \bibinfo{person}{Ethan Katz-Bassett},
+  \bibinfo{person}{Thomas Anderson}, {and} \bibinfo{person}{Arvind
+  Krishnamurthy}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Poiroot: Investigating the root cause of
+  interdomain path changes}. In \bibinfo{booktitle}{{\em ACM SIGCOMM Computer
+  Communication Review}}, Vol.~\bibinfo{volume}{43}. ACM,
+  \bibinfo{pages}{183--194}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kwon, Kim, Kim, Suh, Kim, and Kim}{Kwon
+  et~al\mbox{.}}{2017}]%
+        {kwon2017survey}
+\bibfield{author}{\bibinfo{person}{Donghwoon Kwon}, \bibinfo{person}{Hyunjoo
+  Kim}, \bibinfo{person}{Jinoh Kim}, \bibinfo{person}{Sang~C Suh},
+  \bibinfo{person}{Ikkyun Kim}, {and} \bibinfo{person}{Kuinam~J Kim}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{A survey of deep learning-based network anomaly
+  detection}.
+\newblock \bibinfo{journal}{{\em Cluster Computing\/}} (\bibinfo{year}{2017}),
+  \bibinfo{pages}{1--13}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Lv, Duan, Kang, Li, and Wang}{Lv
+  et~al\mbox{.}}{2015}]%
+        {lv2015traffic}
+\bibfield{author}{\bibinfo{person}{Yisheng Lv}, \bibinfo{person}{Yanjie Duan},
+  \bibinfo{person}{Wenwen Kang}, \bibinfo{person}{Zhengxi Li}, {and}
+  \bibinfo{person}{Fei-Yue Wang}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Traffic flow prediction with big data: a deep
+  learning approach}.
+\newblock \bibinfo{journal}{{\em IEEE Transactions on Intelligent
+  Transportation Systems\/}} \bibinfo{volume}{16}, \bibinfo{number}{2}
+  (\bibinfo{year}{2015}), \bibinfo{pages}{865--873}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Paxson}{Paxson}{1996}]%
+        {paxson1996end}
+\bibfield{author}{\bibinfo{person}{Vern Paxson}.}
+  \bibinfo{year}{1996}\natexlab{}.
+\newblock \showarticletitle{End-to-end routing behavior in the Internet}.
+\newblock \bibinfo{journal}{{\em ACM SIGCOMM Computer Communication Review\/}}
+  \bibinfo{volume}{26}, \bibinfo{number}{4} (\bibinfo{year}{1996}),
+  \bibinfo{pages}{25--38}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ranjan}{Ranjan}{2014}]%
+        {ranjan2014machine}
+\bibfield{author}{\bibinfo{person}{Supranamaya Ranjan}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \bibinfo{title}{Machine learning based botnet detection using
+  real-time extracted traffic features}.
+\newblock   (\bibinfo{date}{March~25} \bibinfo{year}{2014}).
+\newblock
+\newblock
+\shownote{US Patent 8,682,812.}
+
+
+\bibitem[\protect\citeauthoryear{Singh, Guntuku, Thakur, and Hota}{Singh
+  et~al\mbox{.}}{2014}]%
+        {singh2014big}
+\bibfield{author}{\bibinfo{person}{Kamaldeep Singh},
+  \bibinfo{person}{Sharath~Chandra Guntuku}, \bibinfo{person}{Abhishek Thakur},
+  {and} \bibinfo{person}{Chittaranjan Hota}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Big data analytics framework for peer-to-peer
+  botnet detection using random forests}.
+\newblock \bibinfo{journal}{{\em Information Sciences\/}}
+  \bibinfo{volume}{278} (\bibinfo{year}{2014}), \bibinfo{pages}{488--497}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Tao, Kong, Wei, and Wang}{Tao
+  et~al\mbox{.}}{2016}]%
+        {tao2016big}
+\bibfield{author}{\bibinfo{person}{Xiaoling Tao}, \bibinfo{person}{Deyan Kong},
+  \bibinfo{person}{Yi Wei}, {and} \bibinfo{person}{Yong Wang}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{A Big Network Traffic Data Fusion Approach Based on
+  Fisher and Deep Auto-Encoder}.
+\newblock \bibinfo{journal}{{\em Information\/}} \bibinfo{volume}{7},
+  \bibinfo{number}{2} (\bibinfo{year}{2016}), \bibinfo{pages}{20}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Thottan and Ji}{Thottan and Ji}{2003}]%
+        {thottan2003anomaly}
+\bibfield{author}{\bibinfo{person}{Marina Thottan} {and}
+  \bibinfo{person}{Chuanyi Ji}.} \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{Anomaly detection in IP networks}.
+\newblock \bibinfo{journal}{{\em IEEE Transactions on signal processing\/}}
+  \bibinfo{volume}{51}, \bibinfo{number}{8} (\bibinfo{year}{2003}),
+  \bibinfo{pages}{2191--2204}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wassermann, Casas, Cuvelier, and
+  Donnet}{Wassermann et~al\mbox{.}}{2017}]%
+        {wassermann2017predicting}
+\bibfield{author}{\bibinfo{person}{Sarah Wassermann}, \bibinfo{person}{Pedro
+  Casas}, \bibinfo{person}{Thibaut Cuvelier}, {and} \bibinfo{person}{Benoit
+  Donnet}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em Predicting Internet Path Dynamics and
+  Performance with Machine Learning}}.
+\newblock \bibinfo{type}{{T}echnical {R}eport}. \bibinfo{institution}{AIT
+  Austria}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhao, Traore, Sayed, Lu, Saad, Ghorbani, and
+  Garant}{Zhao et~al\mbox{.}}{2013}]%
+        {zhao2013botnet}
+\bibfield{author}{\bibinfo{person}{David Zhao}, \bibinfo{person}{Issa Traore},
+  \bibinfo{person}{Bassam Sayed}, \bibinfo{person}{Wei Lu},
+  \bibinfo{person}{Sherif Saad}, \bibinfo{person}{Ali Ghorbani}, {and}
+  \bibinfo{person}{Dan Garant}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Botnet detection based on traffic behavior analysis
+  and flow intervals}.
+\newblock \bibinfo{journal}{{\em Computers \& Security\/}}
+  \bibinfo{volume}{39} (\bibinfo{year}{2013}), \bibinfo{pages}{2--16}.
+\newblock
+
+
+\end{thebibliography}
