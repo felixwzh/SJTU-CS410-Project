@@ -35,9 +35,9 @@ ca_config["max_layers"] = 100
 ca_config["early_stopping_rounds"] = 3
 ca_config["n_classes"] = num_class_list[args.task_num]
 ca_config["estimators"] = []
-ca_config["estimators"].append(
-        {"n_folds": 5, "type": "XGBClassifier", "n_estimators": 10, "max_depth": 5,
-         "objective": "multi:softprob", "silent": True, "nthread": -1, "learning_rate": 0.1} )
+# ca_config["estimators"].append(
+#         {"n_folds": 5, "type": "XGBClassifier", "n_estimators": 10, "max_depth": 5,
+#          "objective": "multi:softprob", "silent": True, "nthread": -1, "learning_rate": 0.1} )
 ca_config["estimators"].append({"n_folds": 5, "type": "RandomForestClassifier", "n_estimators": 10, "max_depth": None, "n_jobs": -1})
 ca_config["estimators"].append({"n_folds": 5, "type": "ExtraTreesClassifier", "n_estimators": 10, "max_depth": None, "n_jobs": -1})
 ca_config["estimators"].append({"n_folds": 5, "type": "LogisticRegression"})
