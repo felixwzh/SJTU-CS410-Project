@@ -5,11 +5,21 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{natbib}
-\usepackage{natbib}
+
 \newcommand{\kai}[1]{{\bf \color{blue} [[Shukai says ``#1'']]}}
 \newcommand{\heng}[1]{{\bf \color{cyan} [[Yuheng says ``#1'']]}}
 \newcommand{\hao}[1]{{\bf \color{red} [[Hao says ``#1'']]}}
 \newcommand{\hui}[1]{{\bf \color{purple} [[Zhenghui says ``#1'']]}}
+\newcommand{\concat}{\oplus}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bh}{\mathbf{h}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bE}{\bs{E}}
+\newcommand{\bA}{\bs{A}}
+\newcommand{\mL}{\mathcal{L}}
 % Copyright
 %\setcopyright{none}
 %\setcopyright{acmcopyright}
@@ -133,7 +143,86 @@
 		\caption{ Experiment results ($ABC$) of LSTM models with vector input. }
 		\label{tab:lstm-vector}
 	\end{table}
+	
+	\section{Models}
+	In this section, we briefly introduce the models we leveraged in this project, from traditional machine learning models (SVM, LR, random forest) to deep models (deep neural networks and deep forest).
+	
+	\subsection{Support Vector Machine}
+	Support vector machine (SVM) is a supervised leanring model proposed by \citet{cortes1995support}. Its main idea is to find a hyper plane in the feature space to separate different samples into different categories, Different from other linear model like linear regression, SVM aims to maximize the \textit{margin} between two different categories' samples and the samples on the boundary are so-called \textit{support vectors}. 
+	
+	However, sometimes the smaples are not linear separable, then \citet{cristianini1999introduction} introduce so-called kernel trick, to project samples with finite dimensions to a high dimension or even infinite dimension space implicitly. More formally, let $\phi(\mathbf{x}_i)$ be the projected high dimension vector and $\mathbf{x}_i$ the original vector, we have:
+	\begin{equation}
+	\mathcal{K}(\mathbf{x}_i,\mathbf{x}_j)=<\phi(\mathbf{x}_i),\phi(\mathbf{x}_j)>=\phi(\mathbf{x}_i)^T\phi(\mathbf{x}_j)
+	\end{equation}
+	Some of the common kernel functions are as follows:
+	\begin{enumerate}
+		\item linear kernel:
+		\begin{equation}
+		\mathcal{K}(\mathbf{x}_i,\bx_j)=\bx_i^T\bx_j
+		\end{equation}
+		
+		\item polynomial kernel:
+		\begin{equation}
+		\mathcal{K}(\bx_i,\bx_j)=(\gamma \bx_i^T\bx_j + r)^d, d>1
+		\end{equation}
+		
+		\item RBF (Gaussian) kernel:
+		\begin{equation}
+		\mathcal{K}(\bx_i,\bx_j)=\exp(-\gamma ||\bx_i-\bx_j||^2),\gamma>0
+		\end{equation}
+		
+		\item sigmoid kernel:  
+		\begin{equation}
+		\mathcal{K}(\bx_i,\bx_j)=\tanh(\gamma \bx_i^T\bx_j + r ), \gamma>0, r<0
+		\end{equation}
+	\end{enumerate}
+	
+	To better tailor SVM for multi-class classification problems, several methods are proposed. \citet{liu2005one} use so-called \textit{one-against-all} approach, while \citet{knerr1990single} use a more robust approach which is called \textit{one-against-one}. Briefly speaking, if we have $n$ classes, then $\frac{1}{2}n(n-1)$ classifiers are constructed. For each individual classifier, it trains data from two classes. There are also many fancy methods to construct a multi-class classifier using SVM like leveraging binary decision tree \cite{madzarov2009multi}, But we use the one-against-one approach in our experiments.
 
+
+	\subsection{Random Forest}
+	Random Forest \cite{breiman2001random} is one of the ensemble machine leanring models \cite{zhou2012ensemble} which could be both applied on classification and regression problems. As it is called ensemble methods, its basic components are decision trees \cite{safavian1991survey} and that the reason why it's called \textit{forest}. An illustration for random forest is shown in Figure~\ref{fig:rand-forest}. We first introduce decision tree and then random forest. 
+	
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{../figs/rand-forest}
+	\caption{An illustration for random forest.}
+	\label{fig:rand-forest}
+	\end{figure}
+	
+	A decision tree is a non-parametric supervised learning method which conduct a classification problem by make many decisions in the tree. It learns the structure of the tree by exploring all the possible plit point of every feature, and measure the quality of the split point by some \textit{purity} metrics such as information entropy $Ent(D)$ :
+	
+	\begin{equation}
+		Ent(D)=-\sum_{k=1}^{|\mathcal{Y}|}p_k\log_2p_k
+	\end{equation}
+	where $D$ is the current sample set and $p_k$ is the ratio of the $k$-th class in $D$ $(k=1,2,...,\mathcal{Y})$. Obviously, $D$ is more pure if $Ent(D)$ is smaller.
+	Some other purity metric includes \textit{information gain}, \textit{gain ratio} and \textit{Gini index} in CART (Classification and Regression Tree)  \cite{breiman1984classification}.
+	
+	Although we can use some techniques like control the minimal size of leaf node to reduce the risk of over fitting, it is still easy for decision tree to over fit. Thus, random forest (RF) is proposed \cite{breiman2001random}. It main idea is that the performance of many \textit{weak} classifiers is equal to the performance of a strong classifier. Because the diversity of many weak classifiers boost the whole model's (forest's) generalization ability. More specificly, for each split node of each tree in  RF, we do not search all the possible split points to find the \textit{best} split point. Instead, we randomly select some of the features' possible split points to find a possible best split point. This is the most important part of RF, and this is the origin of RF's diversity. More formally, suppose we have $d$ different features for each sample, we only take $k$ features into account when constructing a node. The recommend value for $k$ is $\log_2d$ \cite{breiman2001random}. If $k=1$, we randomly select only one feature. When $k=d$, the
+	tree is a traditional decision tree.
+	
+	
+	\subsection{Deep Forest}
+	Deep forest is a decision tree ensemble approach with highly competitive performance to deep neural networks. It is recently proposed by \citet{zhou2017deep}. It is well known that when we talk about the term \textit{deep}, we usually mean many layers of neural networks such as the very deep convolutional neural networks' variant -- ResNet \cite{he2016deep} or the deep recurrent neural networks in temporal sequence like long short-term memory (LSTM) \cite{hochreiter1997long}. We rarely construct some kind of \textit{deep} model for traditional models, especially for those models which do not use a gradient based learning approach like random forest.
+	
+	However, \citet{zhou2017deep} successfully construct a multi-layer ensemble approach using traditional models -- random forest. More specificly, deep forest use so-called multi-grained sacnning (illustrated in Figure~\ref{fig:multi-grained-scanning}) to do representation learning. It is similar to the convolution operation but with a decision tree based approach. 
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{../figs/multi-grained-scanning}
+	\caption{ Illustration of feature re-representation using multi-grained sacnning. Suppose there are three classes, raw features are 400-dim, and sliding window is 100-dim.}
+	\label{fig:multi-grained-scanning}
+	\end{figure}
+	
+	After the multi-grained sacnning layer, a cascade forest structure is leveraged to learn better representation in a level-by-level way. Each level is an ensemble fo decision tree forest. And the \textit{diversity} is encouraged by incluing different types of forest like 2 random forests with $k=\sqrt{d}$ and 2 completely-random tree forests with $k=1$. The split is guided by the \textit{gini} value. The construction of the levels are adaptive. Each level will generate a class vector as a leared representation for next level and each level's input are the origin feature vector concatenated with early level's output class vector. For each level, we evaluate the performance with $k$-fold cross validation. If there is no significant improvement of the performance, we stop the training. The illustration for both multi-grained sacnning and cascade forest structure are shown in Figure~\ref{fig:deep-forest}, which is the whole model's pipline. 
+	
+	
+\begin{figure*}[h]
+\centering
+\includegraphics[width=1\linewidth]{../figs/deep-forest}
+\caption{The overall procedure of deep forest. Suppose there are three classes to predict, raw features are 400-dim, and three sizes of sliding windows are used.}
+\label{fig:deep-forest}
+\end{figure*}
+	
 	
 
 	\begin{acks}
@@ -147,43 +236,3 @@
 	
 	
 \end{document}
-=======
-\documentclass[sigconf]{acmart}
-
-\usepackage{booktabs} % For formal tables
-\usepackage{url}
-\newcommand{\kai}[1]{{\bf \color{blue} [[Shukai says ``#1'']]}}
-\newcommand{\heng}[1]{{\bf \color{cyan} [[Yuheng says ``#1'']]}}
-\newcommand{\hao}[1]{{\bf \color{red} [[Hao says ``#1'']]}}
-\newcommand{\hui}[1]{{\bf \color{purple} [[Zhenghui says ``#1'']]}}
-% Copyright
-%\setcopyright{none}
-%\setcopyright{acmcopyright}
-%\setcopyright{acmlicensed}
-\setcopyright{rightsretained}
-%\setcopyright{usgov}
-%\setcopyright{usgovmixed}
-%\setcopyright{cagov}
-%\setcopyright{cagovmixed}
-
-
-% DOI
-%\acmDOI{10.475/123_4}
-
-% ISBN
-%\acmISBN{123-4567-24-567/08/06}
-
-%Conference
-\acmConference[CNW]{SJTU Computer Network Workshop}{December 2017}{Shanghai, China} 
-\acmYear{2017}
-\copyrightyear{2017}
-
-
-%\acmArticle{4}
-%\acmPrice{15.00}
-
-% These commands are optional
-%\acmBooktitle{Transactions of the ACM Woodstock conference}
-%\editor{Jennifer B. Sartor}
-%\editor{Theo D'Hondt}
-%\editor{Wolfgang De Meuter}

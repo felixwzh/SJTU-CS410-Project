@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{13}
+\begin{thebibliography}{12}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -37,171 +37,138 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
-\bibitem[\protect\citeauthoryear{Alom, Bontupalli, and Taha}{Alom
-  et~al\mbox{.}}{2015}]%
-        {alom2015intrusion}
-\bibfield{author}{\bibinfo{person}{Md~Zahangir Alom},
-  \bibinfo{person}{VenkataRamesh Bontupalli}, {and} \bibinfo{person}{Tarek~M
-  Taha}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Intrusion detection using deep belief networks}. In
-  \bibinfo{booktitle}{{\em Aerospace and Electronics Conference (NAECON), 2015
-  National}}. IEEE, \bibinfo{pages}{339--344}.
+\bibitem[\protect\citeauthoryear{Breiman}{Breiman}{2001}]%
+        {breiman2001random}
+\bibfield{author}{\bibinfo{person}{Leo Breiman}.}
+  \bibinfo{year}{2001}\natexlab{}.
+\newblock \showarticletitle{Random forests}.
+\newblock \bibinfo{journal}{{\em Machine learning\/}} \bibinfo{volume}{45},
+  \bibinfo{number}{1} (\bibinfo{year}{2001}), \bibinfo{pages}{5--32}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Beigi, Jazi, Stakhanova, and Ghorbani}{Beigi
-  et~al\mbox{.}}{2014}]%
-        {beigi2014towards}
-\bibfield{author}{\bibinfo{person}{Elaheh~Biglar Beigi},
-  \bibinfo{person}{Hossein~Hadian Jazi}, \bibinfo{person}{Natalia Stakhanova},
-  {and} \bibinfo{person}{Ali~A Ghorbani}.} \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{Towards effective feature selection in machine
-  learning-based botnet detection approaches}. In \bibinfo{booktitle}{{\em
-  Communications and Network Security (CNS), 2014 IEEE Conference on}}. IEEE,
-  \bibinfo{pages}{247--255}.
+\bibitem[\protect\citeauthoryear{Breiman, Friedman, Stone, and Olshen}{Breiman
+  et~al\mbox{.}}{1984}]%
+        {breiman1984classification}
+\bibfield{author}{\bibinfo{person}{Leo Breiman}, \bibinfo{person}{Jerome
+  Friedman}, \bibinfo{person}{Charles~J Stone}, {and}
+  \bibinfo{person}{Richard~A Olshen}.} \bibinfo{year}{1984}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em Classification and regression trees}}.
+\newblock \bibinfo{publisher}{CRC press}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Hou, Chang, Chen, Laih, and Chen}{Hou
-  et~al\mbox{.}}{2010}]%
-        {hou2010malicious}
-\bibfield{author}{\bibinfo{person}{Yung-Tsung Hou}, \bibinfo{person}{Yimeng
-  Chang}, \bibinfo{person}{Tsuhan Chen}, \bibinfo{person}{Chi-Sung Laih}, {and}
-  \bibinfo{person}{Chia-Mei Chen}.} \bibinfo{year}{2010}\natexlab{}.
-\newblock \showarticletitle{Malicious web content detection by machine
-  learning}.
-\newblock \bibinfo{journal}{{\em Expert Systems with Applications\/}}
-  \bibinfo{volume}{37}, \bibinfo{number}{1} (\bibinfo{year}{2010}),
-  \bibinfo{pages}{55--60}.
+\bibitem[\protect\citeauthoryear{Cortes and Vapnik}{Cortes and Vapnik}{1995}]%
+        {cortes1995support}
+\bibfield{author}{\bibinfo{person}{Corinna Cortes} {and}
+  \bibinfo{person}{Vladimir Vapnik}.} \bibinfo{year}{1995}\natexlab{}.
+\newblock \showarticletitle{Support-Vector Networks}.
+\newblock \bibinfo{journal}{{\em Machine Learning\/}} \bibinfo{volume}{20},
+  \bibinfo{number}{3} (\bibinfo{year}{1995}), \bibinfo{pages}{273--297}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Javed, Cunha, Choffnes, Katz-Bassett,
-  Anderson, and Krishnamurthy}{Javed et~al\mbox{.}}{2013}]%
-        {javed2013poiroot}
-\bibfield{author}{\bibinfo{person}{Umar Javed}, \bibinfo{person}{Italo Cunha},
-  \bibinfo{person}{David Choffnes}, \bibinfo{person}{Ethan Katz-Bassett},
-  \bibinfo{person}{Thomas Anderson}, {and} \bibinfo{person}{Arvind
-  Krishnamurthy}.} \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{Poiroot: Investigating the root cause of
-  interdomain path changes}. In \bibinfo{booktitle}{{\em ACM SIGCOMM Computer
-  Communication Review}}, Vol.~\bibinfo{volume}{43}. ACM,
-  \bibinfo{pages}{183--194}.
+\bibitem[\protect\citeauthoryear{{Cristianini} and
+  {Shawe-Taylor}}{{Cristianini} and {Shawe-Taylor}}{1999}]%
+        {cristianini1999introduction}
+\bibfield{author}{\bibinfo{person}{Nello {Cristianini}} {and}
+  \bibinfo{person}{John {Shawe-Taylor}}.} \bibinfo{year}{1999}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em An introduction to support Vector Machines:
+  and other kernel-based learning methods}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Kwon, Kim, Kim, Suh, Kim, and Kim}{Kwon
-  et~al\mbox{.}}{2017}]%
-        {kwon2017survey}
-\bibfield{author}{\bibinfo{person}{Donghwoon Kwon}, \bibinfo{person}{Hyunjoo
-  Kim}, \bibinfo{person}{Jinoh Kim}, \bibinfo{person}{Sang~C Suh},
-  \bibinfo{person}{Ikkyun Kim}, {and} \bibinfo{person}{Kuinam~J Kim}.}
-  \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{A survey of deep learning-based network anomaly
-  detection}.
-\newblock \bibinfo{journal}{{\em Cluster Computing\/}} (\bibinfo{year}{2017}),
-  \bibinfo{pages}{1--13}.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Lv, Duan, Kang, Li, and Wang}{Lv
-  et~al\mbox{.}}{2015}]%
-        {lv2015traffic}
-\bibfield{author}{\bibinfo{person}{Yisheng Lv}, \bibinfo{person}{Yanjie Duan},
-  \bibinfo{person}{Wenwen Kang}, \bibinfo{person}{Zhengxi Li}, {and}
-  \bibinfo{person}{Fei-Yue Wang}.} \bibinfo{year}{2015}\natexlab{}.
-\newblock \showarticletitle{Traffic flow prediction with big data: a deep
-  learning approach}.
-\newblock \bibinfo{journal}{{\em IEEE Transactions on Intelligent
-  Transportation Systems\/}} \bibinfo{volume}{16}, \bibinfo{number}{2}
-  (\bibinfo{year}{2015}), \bibinfo{pages}{865--873}.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Paxson}{Paxson}{1996}]%
-        {paxson1996end}
-\bibfield{author}{\bibinfo{person}{Vern Paxson}.}
-  \bibinfo{year}{1996}\natexlab{}.
-\newblock \showarticletitle{End-to-end routing behavior in the Internet}.
-\newblock \bibinfo{journal}{{\em ACM SIGCOMM Computer Communication Review\/}}
-  \bibinfo{volume}{26}, \bibinfo{number}{4} (\bibinfo{year}{1996}),
-  \bibinfo{pages}{25--38}.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Ranjan}{Ranjan}{2014}]%
-        {ranjan2014machine}
-\bibfield{author}{\bibinfo{person}{Supranamaya Ranjan}.}
-  \bibinfo{year}{2014}\natexlab{}.
-\newblock \bibinfo{title}{Machine learning based botnet detection using
-  real-time extracted traffic features}.
-\newblock   (\bibinfo{date}{March~25} \bibinfo{year}{2014}).
-\newblock
-\newblock
-\shownote{US Patent 8,682,812.}
-
-
-\bibitem[\protect\citeauthoryear{Singh, Guntuku, Thakur, and Hota}{Singh
-  et~al\mbox{.}}{2014}]%
-        {singh2014big}
-\bibfield{author}{\bibinfo{person}{Kamaldeep Singh},
-  \bibinfo{person}{Sharath~Chandra Guntuku}, \bibinfo{person}{Abhishek Thakur},
-  {and} \bibinfo{person}{Chittaranjan Hota}.} \bibinfo{year}{2014}\natexlab{}.
-\newblock \showarticletitle{Big data analytics framework for peer-to-peer
-  botnet detection using random forests}.
-\newblock \bibinfo{journal}{{\em Information Sciences\/}}
-  \bibinfo{volume}{278} (\bibinfo{year}{2014}), \bibinfo{pages}{488--497}.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Tao, Kong, Wei, and Wang}{Tao
+\bibitem[\protect\citeauthoryear{He, Zhang, Ren, and Sun}{He
   et~al\mbox{.}}{2016}]%
-        {tao2016big}
-\bibfield{author}{\bibinfo{person}{Xiaoling Tao}, \bibinfo{person}{Deyan Kong},
-  \bibinfo{person}{Yi Wei}, {and} \bibinfo{person}{Yong Wang}.}
+        {he2016deep}
+\bibfield{author}{\bibinfo{person}{Kaiming He}, \bibinfo{person}{Xiangyu
+  Zhang}, \bibinfo{person}{Shaoqing Ren}, {and} \bibinfo{person}{Jian Sun}.}
   \bibinfo{year}{2016}\natexlab{}.
-\newblock \showarticletitle{A Big Network Traffic Data Fusion Approach Based on
-  Fisher and Deep Auto-Encoder}.
-\newblock \bibinfo{journal}{{\em Information\/}} \bibinfo{volume}{7},
-  \bibinfo{number}{2} (\bibinfo{year}{2016}), \bibinfo{pages}{20}.
+\newblock \showarticletitle{Deep residual learning for image recognition}. In
+  \bibinfo{booktitle}{{\em Proceedings of the IEEE conference on computer
+  vision and pattern recognition}}. \bibinfo{pages}{770--778}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Thottan and Ji}{Thottan and Ji}{2003}]%
-        {thottan2003anomaly}
-\bibfield{author}{\bibinfo{person}{Marina Thottan} {and}
-  \bibinfo{person}{Chuanyi Ji}.} \bibinfo{year}{2003}\natexlab{}.
-\newblock \showarticletitle{Anomaly detection in IP networks}.
-\newblock \bibinfo{journal}{{\em IEEE Transactions on signal processing\/}}
-  \bibinfo{volume}{51}, \bibinfo{number}{8} (\bibinfo{year}{2003}),
-  \bibinfo{pages}{2191--2204}.
+\bibitem[\protect\citeauthoryear{Hochreiter and Schmidhuber}{Hochreiter and
+  Schmidhuber}{1997}]%
+        {hochreiter1997long}
+\bibfield{author}{\bibinfo{person}{Sepp Hochreiter} {and}
+  \bibinfo{person}{J{\"u}rgen Schmidhuber}.} \bibinfo{year}{1997}\natexlab{}.
+\newblock \showarticletitle{Long short-term memory}.
+\newblock \bibinfo{journal}{{\em Neural computation\/}} \bibinfo{volume}{9},
+  \bibinfo{number}{8} (\bibinfo{year}{1997}), \bibinfo{pages}{1735--1780}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Wassermann, Casas, Cuvelier, and
-  Donnet}{Wassermann et~al\mbox{.}}{2017}]%
-        {wassermann2017predicting}
-\bibfield{author}{\bibinfo{person}{Sarah Wassermann}, \bibinfo{person}{Pedro
-  Casas}, \bibinfo{person}{Thibaut Cuvelier}, {and} \bibinfo{person}{Benoit
-  Donnet}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \bibinfo{booktitle}{{\em Predicting Internet Path Dynamics and
-  Performance with Machine Learning}}.
-\newblock \bibinfo{type}{{T}echnical {R}eport}. \bibinfo{institution}{AIT
-  Austria}.
+\bibitem[\protect\citeauthoryear{Knerr, Personnaz, and Dreyfus}{Knerr
+  et~al\mbox{.}}{1990}]%
+        {knerr1990single}
+\bibfield{author}{\bibinfo{person}{Stefan Knerr}, \bibinfo{person}{L{\'e}on
+  Personnaz}, {and} \bibinfo{person}{G{\'e}rard Dreyfus}.}
+  \bibinfo{year}{1990}\natexlab{}.
+\newblock \showarticletitle{Single-layer learning revisited: a stepwise
+  procedure for building and training a neural network}.
+\newblock \bibinfo{journal}{{\em Neurocomputing: algorithms, architectures and
+  applications\/}} \bibinfo{volume}{68}, \bibinfo{number}{41-50}
+  (\bibinfo{year}{1990}), \bibinfo{pages}{71}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Zhao, Traore, Sayed, Lu, Saad, Ghorbani, and
-  Garant}{Zhao et~al\mbox{.}}{2013}]%
-        {zhao2013botnet}
-\bibfield{author}{\bibinfo{person}{David Zhao}, \bibinfo{person}{Issa Traore},
-  \bibinfo{person}{Bassam Sayed}, \bibinfo{person}{Wei Lu},
-  \bibinfo{person}{Sherif Saad}, \bibinfo{person}{Ali Ghorbani}, {and}
-  \bibinfo{person}{Dan Garant}.} \bibinfo{year}{2013}\natexlab{}.
-\newblock \showarticletitle{Botnet detection based on traffic behavior analysis
-  and flow intervals}.
-\newblock \bibinfo{journal}{{\em Computers \& Security\/}}
-  \bibinfo{volume}{39} (\bibinfo{year}{2013}), \bibinfo{pages}{2--16}.
+\bibitem[\protect\citeauthoryear{Liu and Zheng}{Liu and Zheng}{2005}]%
+        {liu2005one}
+\bibfield{author}{\bibinfo{person}{Yi Liu} {and} \bibinfo{person}{Yuan~F
+  Zheng}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{One-against-all multi-class SVM classification
+  using reliability measures}. In \bibinfo{booktitle}{{\em Neural Networks,
+  2005. IJCNN'05. Proceedings. 2005 IEEE International Joint Conference on}},
+  Vol.~\bibinfo{volume}{2}. IEEE, \bibinfo{pages}{849--854}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Madzarov, Gjorgjevikj, and Chorbev}{Madzarov
+  et~al\mbox{.}}{2009}]%
+        {madzarov2009multi}
+\bibfield{author}{\bibinfo{person}{Gjorgji Madzarov}, \bibinfo{person}{Dejan
+  Gjorgjevikj}, {and} \bibinfo{person}{Ivan Chorbev}.}
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{A multi-class SVM classifier utilizing binary
+  decision tree}.
+\newblock \bibinfo{journal}{{\em Informatica\/}} \bibinfo{volume}{33},
+  \bibinfo{number}{2} (\bibinfo{year}{2009}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Safavian and Landgrebe}{Safavian and
+  Landgrebe}{1991}]%
+        {safavian1991survey}
+\bibfield{author}{\bibinfo{person}{S~Rasoul Safavian} {and}
+  \bibinfo{person}{David Landgrebe}.} \bibinfo{year}{1991}\natexlab{}.
+\newblock \showarticletitle{A survey of decision tree classifier methodology}.
+\newblock \bibinfo{journal}{{\em IEEE transactions on systems, man, and
+  cybernetics\/}} \bibinfo{volume}{21}, \bibinfo{number}{3}
+  (\bibinfo{year}{1991}), \bibinfo{pages}{660--674}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhou}{Zhou}{2012}]%
+        {zhou2012ensemble}
+\bibfield{author}{\bibinfo{person}{Zhi-Hua Zhou}.}
+  \bibinfo{year}{2012}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em Ensemble methods: foundations and
+  algorithms}}.
+\newblock \bibinfo{publisher}{CRC press}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zhou and Feng}{Zhou and Feng}{2017}]%
+        {zhou2017deep}
+\bibfield{author}{\bibinfo{person}{Zhi-Hua Zhou} {and} \bibinfo{person}{Ji
+  Feng}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Deep forest: Towards an alternative to deep neural
+  networks}.
+\newblock \bibinfo{journal}{{\em arXiv preprint arXiv:1702.08835\/}}
+  (\bibinfo{year}{2017}).
 \newblock
 
 
