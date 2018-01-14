@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{PCA}
+A.~Rechtsteiner M.~E.~Wall and L.~M. Rocha.
+\newblock Singular value decomposition and principal component analysis.
+\newblock {\em In A prac- tical approach to microarray data analysis}, pages
+  91--109, Springer, 2003.
+
+\bibitem{Dropout}
+A.~Krizhevsky I.~Sutskever N.~Srivastava, G.~Hinton and R.~Salakhutdinov.
+\newblock Dropout: A simple way to prevent neural networks from overfitting.
+\newblock {\em The Journal of Machine Learning Research}, 15(1):1929--1958,
+  2014.
+
+\bibitem{Deeplearning}
+Y.~Bengio Y.~LeCun and G.~Hinton.
+\newblock Deep learning.
+\newblock {\em nature}, 521(7553):436, 2015.
+
+\end{thebibliography}

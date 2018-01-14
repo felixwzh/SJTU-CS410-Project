@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: report.aux
+The style file: plain.bst
+Database file #1: report.bib.bib
+Name 1 in "M. E. Wall, A. Rechtsteiner, and L. M. Rocha" has a comma at the end for entry PCA
+while executing---line 1049 of file plain.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 1049 of file plain.bst
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 1049 of file plain.bst
+Name 1 in "M. E. Wall, A. Rechtsteiner, and L. M. Rocha" has a comma at the end for entry PCA
+while executing---line 1090 of file plain.bst
+Name 1 in "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" has a comma at the end for entry Dropout
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "N. Srivastava, G. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov" for entry Dropout
+while executing---line 1090 of file plain.bst
+Name 1 in "Y. LeCun, Y. Bengio, and G. Hinton" has a comma at the end for entry Deeplearning
+while executing---line 1090 of file plain.bst
+You've used 3 entries,
+            2118 wiz_defined-function locations,
+            520 strings with 4486 characters,
+and the built_in function-call counts, 1040 in all, are:
+= -- 107
+> -- 39
+< -- 1
++ -- 15
+- -- 12
+* -- 67
+:= -- 175
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 15
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 40
+empty$ -- 81
+format.name$ -- 12
+if$ -- 218
+int.to.chr$ -- 0
+int.to.str$ -- 3
+missing$ -- 3
+newline$ -- 18
+num.names$ -- 6
+pop$ -- 11
+preamble$ -- 1
+purify$ -- 12
+quote$ -- 0
+skip$ -- 33
+stack$ -- 0
+substring$ -- 82
+swap$ -- 10
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 12
+warning$ -- 0
+while$ -- 12
+width$ -- 4
+write$ -- 35
+(There were 8 error messages)
