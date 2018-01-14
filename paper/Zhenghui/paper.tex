@@ -285,7 +285,7 @@ Deep learning \cite{Deeplearning} has been shown as a successful machine learnin
 
 \begin{itemize}
 	\item \textbf{NN on PCA-processed data}\\
-	In this model, firstly we use pca-processed data (500-dimension) as our network input. Then we add hidden layer1(256-dimension), hidden layer2(512-dimension), hidden layer3(256-dimension), finally a output layer.  The structure is shown as Figure~\ref{nn_1} network \romannumeral1. 
+	In this model, firstly we use PCA-processed data (500-dimension) as our network input. Then we add hidden layer1(256-dimension), hidden layer2(512-dimension), hidden layer3(256-dimension), finally a output layer.  The structure is shown as Figure~\ref{nn_1} network \romannumeral1. 
 	For weight initialization, we initialize each neurons weight vector as a random vector sampled from a multi-dimensional gaussian. For bias initialization, we set the bias vectors all to $0$. We initialize our weight with the consideration that the size of our network is limited and it can be trained easily according to the network \romannumeral2.
 	
 	\item \textbf{NN on raw data}\\
@@ -313,11 +313,11 @@ More specifically, to determine weights of first hidden layer, we use the networ
 
 \begin{figure}[]
 	\centering
-	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain1.png}
-	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain2.png}
-	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain3.png}
-	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain4.png}
-	\caption{a.network \romannumeral1;  b, network \romannumeral2; c, network \romannumeral3; d, network \romannumeral4}
+	\includegraphics[width=0.2\textwidth]{../figs/pretrain1.png}
+	\includegraphics[width=0.2\textwidth]{../figs/pretrain2.png}
+	\includegraphics[width=0.2\textwidth]{../figs/pretrain3.png}
+	\includegraphics[width=0.2\textwidth]{../figs/pretrain4.png}
+	\caption{a.network \romannumeral1;  b, network \romannumeral2; c, network \romannumeral3; d, network \romannumeral4 (From left to right and top to down). }
 	\label{pretrain_1}
 	\centering
 \end{figure}
@@ -366,11 +366,11 @@ More specifically, to determine weights of first hidden layer, we use the networ
 
 	\begin{figure}[]
 		\centering
-		\includegraphics[width=0.4\textwidth]{../figs/Material-2.pdf}
-		\includegraphics[width=0.4\textwidth]{../figs/Sex-2.pdf}
-		\includegraphics[width=0.4\textwidth]{../figs/Disease-16.pdf}
-		\includegraphics[width=0.4\textwidth]{../figs/Bio-7.pdf}
-		\caption{a.Material-2 Distribution;  b, Sex-2 Distribution2; c, Disease-16 Distribution; d,Bio-7 Distribution}
+		\includegraphics[width=0.2\textwidth]{../figs/Material-2.pdf}
+		\includegraphics[width=0.2\textwidth]{../figs/Sex-2.pdf}
+		\includegraphics[width=0.2\textwidth]{../figs/Disease-16.pdf}
+		\includegraphics[width=0.2\textwidth]{../figs/Bio-7.pdf}
+		\caption{a.Material-2 Distribution;  b, Sex-2 Distribution2; c, Disease-16 Distribution; d,Bio-7 Distribution (From top to down). }
 		\label{distribution_1}
 		\centering
 	\end{figure}
@@ -590,10 +590,10 @@ We find that when applied on 4 different tasks, the final levels of deep forest 
 	\label{tab:DeepForest}
 \end{table}
 
-\subsection{Deep Learning based Method}
+\subsection{Deep Neural Network}
 
 \subsubsection{ NN on PCA-processed data}
-At first we try deep neural network on   pca-processed data. The dimension is 500, and the network is shown in Figure~\ref{nn_1}. Besides,  we use L2 regularization and dropout to avoid overfitting. The dropout rate is 0.50. In the end, we use batch normalization in each layer and it greatly improves the performance. The results and selected parameters are shown in Table~\ref{nnpca_result}.
+At first we try deep neural network on   PCA-processed data. The dimension is 500, and the network is shown in Figure~\ref{nn_1}. Besides,  we use L2 regularization and dropout to avoid overfitting. The dropout rate is 0.50. In the end, we use batch normalization in each layer and it greatly improves the performance. The results and selected parameters are shown in Table~\ref{nnpca_result}.
 	
 	\begin{table}[tbp]
 		\centering
@@ -608,7 +608,7 @@ At first we try deep neural network on   pca-processed data. The dimension is 50
 			\bottomrule	
 		\end{tabular}
 		
-		\caption{Best results and parameter settings for nn model on pca data. }
+		\caption{Best results and parameter settings for NN model on PCA data. }
 		\label{nnpca_result}
 	\end{table}
 	
@@ -616,11 +616,11 @@ At first we try deep neural network on   pca-processed data. The dimension is 50
 	
 	\begin{figure}[]
 		\centering
-		\includegraphics[width=0.4\textwidth]{../figs/lr_acc_bio.pdf}
-		\includegraphics[width=0.4\textwidth]{../figs/lr_acc_sex.pdf}
-		\includegraphics[width=0.4\textwidth]{../figs/lr_loss_bio.pdf}
-		\includegraphics[width=0.4\textwidth]{../figs/lr_loss_sex.pdf}
-		\caption{a.accuracy in Bio task;  b, accuracy in Sex task; c, loss in Bio task; d, loss in Sex task}
+		\includegraphics[width=0.2\textwidth]{../figs/lr_acc_bio.pdf}
+		\includegraphics[width=0.2\textwidth]{../figs/lr_acc_sex.pdf}
+		\includegraphics[width=0.2\textwidth]{../figs/lr_loss_bio.pdf}
+		\includegraphics[width=0.2\textwidth]{../figs/lr_loss_sex.pdf}
+		\caption{a.accuracy in Bio task;  b, accuracy in Sex task; c, loss in Bio task; d, loss in Sex task (From left to right and top to down). }
 		\label{lr_result}
 		\centering
 	\end{figure}
