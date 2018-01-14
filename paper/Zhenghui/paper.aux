@@ -24,47 +24,87 @@
 \citation{breiman2001random}
 \citation{zhou2012ensemble}
 \citation{safavian1991survey}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Experiment results ($ABC$) of LSTM models with vector input. \relax }}{1}{table.caption.3}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:lstm-vector}{{1}{1}{Experiment results ($ABC$) of LSTM models with vector input. \relax }{table.caption.3}{}}
+\citation{breiman1984classification}
 \@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Models}{1}{section.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Support Vector Machine}{1}{subsection.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Random Forest}{1}{subsection.2.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces An illustration for random forest.\relax }}{1}{figure.caption.4}}
-\newlabel{fig:rand-forest}{{1}{1}{An illustration for random forest.\relax }{figure.caption.4}{}}
-\citation{breiman1984classification}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces An illustration for random forest.\relax }}{1}{figure.caption.3}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:rand-forest}{{1}{1}{An illustration for random forest.\relax }{figure.caption.3}{}}
 \citation{breiman2001random}
 \citation{breiman2001random}
 \citation{zhou2017deep}
 \citation{he2016deep}
 \citation{hochreiter1997long}
 \citation{zhou2017deep}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Deep Forest}{2}{subsection.2.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Illustration of feature re-representation using multi-grained sacnning. Suppose there are three classes, raw features are 400-dim, and sliding window is 100-dim.\relax }}{2}{figure.caption.4}}
+\newlabel{fig:multi-grained-scanning}{{2}{2}{Illustration of feature re-representation using multi-grained sacnning. Suppose there are three classes, raw features are 400-dim, and sliding window is 100-dim.\relax }{figure.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Statistics of the 4 labels used in our experiments. \relax }}{2}{table.caption.8}}
+\newlabel{tab:label}{{1}{2}{Statistics of the 4 labels used in our experiments. \relax }{table.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Experiment}{2}{section.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Label Selection}{2}{subsection.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Experiment Details}{2}{subsection.3.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Cross Validation}{2}{subsubsection.3.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Problem formulation}{2}{subsubsection.3.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Evaluation Metric}{2}{subsubsection.3.2.3}}
+\citation{chollet2015keras}
+\citation{zhou2017deep}
+\citation{scikit-learn}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The overall procedure of deep forest. Suppose there are three classes to predict, raw features are 400-dim, and three sizes of sliding windows are used.\relax }}{3}{figure.caption.5}}
+\newlabel{fig:deep-forest}{{3}{3}{The overall procedure of deep forest. Suppose there are three classes to predict, raw features are 400-dim, and three sizes of sliding windows are used.\relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Statistics of label type \textit  {DiseaseState}\relax }}{3}{figure.caption.6}}
+\newlabel{fig:Stat_DiseaseState}{{4}{3}{Statistics of label type \textit {DiseaseState}\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Statistics of label type \textit  {BioSourceType}\relax }}{3}{figure.caption.7}}
+\newlabel{fig:Stat_BioSourceType}{{5}{3}{Statistics of label type \textit {BioSourceType}\relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Implementation}{3}{subsubsection.3.2.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Dimensionality Reduction}{3}{subsection.3.3}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces  Reserved Variance (\%) of different reduced dimension. \relax }}{4}{table.caption.9}}
+\newlabel{tab:PCA}{{2}{4}{Reserved Variance (\%) of different reduced dimension. \relax }{table.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The performance of SVM in 4 tasks with different data reduced dimensions.\relax }}{4}{figure.caption.10}}
+\newlabel{fig:PCA_Dimension}{{6}{4}{The performance of SVM in 4 tasks with different data reduced dimensions.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{4}{section.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}SVM}{4}{subsection.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Influence of $\gamma $ in polynomial kernel.\relax }}{4}{figure.caption.11}}
+\newlabel{fig:gamma_poly}{{7}{4}{Influence of $\gamma $ in polynomial kernel.\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Influence of $\gamma $ in RBF kernel.\relax }}{4}{figure.caption.12}}
+\newlabel{fig:gamma_rbf}{{8}{4}{Influence of $\gamma $ in RBF kernel.\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Influence of $\gamma $ in sigmoid kernel.\relax }}{4}{figure.caption.13}}
+\newlabel{fig:gamma_sigmoid}{{9}{4}{Influence of $\gamma $ in sigmoid kernel.\relax }{figure.caption.13}{}}
 \bibstyle{ACM-Reference-Format}
 \bibdata{bibliography}
 \bibcite{breiman2001random}{{1}{2001}{{Breiman}}{{Breiman}}}
 \bibcite{breiman1984classification}{{2}{1984}{{Breiman et~al\unhbox \voidb@x \hbox {.}}}{{Breiman, Friedman, Stone, and Olshen}}}
-\bibcite{cortes1995support}{{3}{1995}{{Cortes and Vapnik}}{{Cortes and Vapnik}}}
-\bibcite{cristianini1999introduction}{{4}{1999}{{{Cristianini} and {Shawe-Taylor}}}{{{Cristianini} and {Shawe-Taylor}}}}
-\bibcite{he2016deep}{{5}{2016}{{He et~al\unhbox \voidb@x \hbox {.}}}{{He, Zhang, Ren, and Sun}}}
-\bibcite{hochreiter1997long}{{6}{1997}{{Hochreiter and Schmidhuber}}{{Hochreiter and Schmidhuber}}}
-\bibcite{knerr1990single}{{7}{1990}{{Knerr et~al\unhbox \voidb@x \hbox {.}}}{{Knerr, Personnaz, and Dreyfus}}}
-\bibcite{liu2005one}{{8}{2005}{{Liu and Zheng}}{{Liu and Zheng}}}
-\bibcite{madzarov2009multi}{{9}{2009}{{Madzarov et~al\unhbox \voidb@x \hbox {.}}}{{Madzarov, Gjorgjevikj, and Chorbev}}}
-\bibcite{safavian1991survey}{{10}{1991}{{Safavian and Landgrebe}}{{Safavian and Landgrebe}}}
-\bibcite{zhou2012ensemble}{{11}{2012}{{Zhou}}{{Zhou}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Deep Forest}{2}{subsection.2.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Illustration of feature re-representation using multi-grained sacnning. Suppose there are three classes, raw features are 400-dim, and sliding window is 100-dim.\relax }}{2}{figure.caption.5}}
-\newlabel{fig:multi-grained-scanning}{{2}{2}{Illustration of feature re-representation using multi-grained sacnning. Suppose there are three classes, raw features are 400-dim, and sliding window is 100-dim.\relax }{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {section}{Acknowledgments}{2}{section*.8}}
-\@writefile{toc}{\contentsline {section}{References}{2}{section*.10}}
-\bibcite{zhou2017deep}{{12}{2017}{{Zhou and Feng}}{{Zhou and Feng}}}
+\bibcite{chollet2015keras}{{3}{2015}{{Chollet et~al\unhbox \voidb@x \hbox {.}}}{{Chollet et~al\unhbox \voidb@x \hbox {.}}}}
+\bibcite{cortes1995support}{{4}{1995}{{Cortes and Vapnik}}{{Cortes and Vapnik}}}
+\bibcite{cristianini1999introduction}{{5}{1999}{{{Cristianini} and {Shawe-Taylor}}}{{{Cristianini} and {Shawe-Taylor}}}}
+\bibcite{he2016deep}{{6}{2016}{{He et~al\unhbox \voidb@x \hbox {.}}}{{He, Zhang, Ren, and Sun}}}
+\bibcite{hochreiter1997long}{{7}{1997}{{Hochreiter and Schmidhuber}}{{Hochreiter and Schmidhuber}}}
+\bibcite{knerr1990single}{{8}{1990}{{Knerr et~al\unhbox \voidb@x \hbox {.}}}{{Knerr, Personnaz, and Dreyfus}}}
+\bibcite{liu2005one}{{9}{2005}{{Liu and Zheng}}{{Liu and Zheng}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Influence of $C$ in polynomial kernels\relax }}{5}{figure.caption.14}}
+\newlabel{fig:C_poly}{{10}{5}{Influence of $C$ in polynomial kernels\relax }{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Influence of $C$ in RBF kernels\relax }}{5}{figure.caption.15}}
+\newlabel{fig:C_rbf}{{11}{5}{Influence of $C$ in RBF kernels\relax }{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Influence of $C$ in sigmoid kernels\relax }}{5}{figure.caption.16}}
+\newlabel{fig:C_sigmoid}{{12}{5}{Influence of $C$ in sigmoid kernels\relax }{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Random Forest}{5}{subsection.4.2}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Best parameter settings for SVM model. \relax }}{5}{table.caption.17}}
+\newlabel{tab:SVM}{{3}{5}{Best parameter settings for SVM model. \relax }{table.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Influence of \textit  {min\_samples\_leaf} in random forest.\relax }}{5}{figure.caption.18}}
+\newlabel{fig:min_samples_leaf}{{13}{5}{Influence of \textit {min\_samples\_leaf} in random forest.\relax }{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {section}{Acknowledgments}{5}{section*.20}}
+\@writefile{toc}{\contentsline {section}{References}{5}{section*.22}}
+\bibcite{madzarov2009multi}{{10}{2009}{{Madzarov et~al\unhbox \voidb@x \hbox {.}}}{{Madzarov, Gjorgjevikj, and Chorbev}}}
+\bibcite{scikit-learn}{{11}{2011}{{Pedregosa et~al\unhbox \voidb@x \hbox {.}}}{{Pedregosa, Varoquaux, Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos, Cournapeau, Brucher, Perrot, and Duchesnay}}}
+\bibcite{safavian1991survey}{{12}{1991}{{Safavian and Landgrebe}}{{Safavian and Landgrebe}}}
+\bibcite{zhou2012ensemble}{{13}{2012}{{Zhou}}{{Zhou}}}
+\bibcite{zhou2017deep}{{14}{2017}{{Zhou and Feng}}{{Zhou and Feng}}}
 \newlabel{tocindent-1}{0pt}
 \newlabel{tocindent0}{0pt}
 \newlabel{tocindent1}{4.62497pt}
 \newlabel{tocindent2}{11.81937pt}
 \newlabel{tocindent3}{22.09708pt}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The overall procedure of deep forest. Suppose there are three classes to predict, raw features are 400-dim, and three sizes of sliding windows are used.\relax }}{3}{figure.caption.6}}
-\newlabel{fig:deep-forest}{{3}{3}{The overall procedure of deep forest. Suppose there are three classes to predict, raw features are 400-dim, and three sizes of sliding windows are used.\relax }{figure.caption.6}{}}
-\newlabel{TotPages}{{3}{3}{}{page.3}{}}
+\newlabel{TotPages}{{6}{6}{}{page.6}{}}

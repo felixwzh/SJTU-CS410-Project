@@ -126,24 +126,6 @@
 	\section{Introduction}
 	
 	
-	
-	\begin{table}[tbp]
-		\centering
-		\begin{tabular}{lcc}
-			\toprule
-			{Target} &{$R_r(t)$}&{$avgRTT_p(t)$} \\
-			\midrule
-			\textit{data-1}& 0.5374 & 0.7310 \\
-			\textit{data-2}& 0.4956& 0.7039     \\
-			\textit{data-3-ws10}& 0.7649 & 0.7521 \\
-			\textit{data-3-ws20}& 0.6513& 0.6901    \\
-			\textit{data-3-ws50}& 0.5647& 0.7074  \\
-			\bottomrule	
-		\end{tabular}
-		\caption{ Experiment results ($ABC$) of LSTM models with vector input. }
-		\label{tab:lstm-vector}
-	\end{table}
-	
 	\section{Models}
 	In this section, we briefly introduce the models we leveraged in this project, from traditional machine learning models (SVM, LR, random forest) to deep models (deep neural networks and deep forest).
 	
@@ -185,7 +167,7 @@
 	
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=1\linewidth]{../figs/rand-forest}
+	\includegraphics[width=0.8\linewidth]{../figs/rand-forest}
 	\caption{An illustration for random forest.}
 	\label{fig:rand-forest}
 	\end{figure}
@@ -203,12 +185,12 @@
 	
 	
 	\subsection{Deep Forest}
-	Deep forest is a decision tree ensemble approach with highly competitive performance to deep neural networks. It is recently proposed by \citet{zhou2017deep}. It is well known that when we talk about the term \textit{deep}, we usually mean many layers of neural networks such as the very deep convolutional neural networks' variant -- ResNet \cite{he2016deep} or the deep recurrent neural networks in temporal sequence like long short-term memory (LSTM) \cite{hochreiter1997long}. We rarely construct some kind of \textit{deep} model for traditional models, especially for those models which do not use a gradient based learning approach like random forest.
+	Deep forest (DF) is a decision tree ensemble approach with highly competitive performance to deep neural networks. It is recently proposed by \citet{zhou2017deep}. It is well known that when we talk about the term \textit{deep}, we usually mean many layers of neural networks such as the very deep convolutional neural networks' variant -- ResNet \cite{he2016deep} or the deep recurrent neural networks in temporal sequence like long short-term memory (LSTM) \cite{hochreiter1997long}. We rarely construct some kind of \textit{deep} model for traditional models, especially for those models which do not use a gradient based learning approach like random forest.
 	
 	However, \citet{zhou2017deep} successfully construct a multi-layer ensemble approach using traditional models -- random forest. More specificly, deep forest use so-called multi-grained sacnning (illustrated in Figure~\ref{fig:multi-grained-scanning}) to do representation learning. It is similar to the convolution operation but with a decision tree based approach. 
 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=1\linewidth]{../figs/multi-grained-scanning}
+	\includegraphics[width=0.8\linewidth]{../figs/multi-grained-scanning}
 	\caption{ Illustration of feature re-representation using multi-grained sacnning. Suppose there are three classes, raw features are 400-dim, and sliding window is 100-dim.}
 	\label{fig:multi-grained-scanning}
 	\end{figure}
@@ -218,21 +200,208 @@
 	
 \begin{figure*}[h]
 \centering
-\includegraphics[width=1\linewidth]{../figs/deep-forest}
+\includegraphics[width=0.9\linewidth]{../figs/deep-forest}
 \caption{The overall procedure of deep forest. Suppose there are three classes to predict, raw features are 400-dim, and three sizes of sliding windows are used.}
 \label{fig:deep-forest}
 \end{figure*}
 	
+	\section{Experiment}
+	In this section, we describe the experiment settings, which includes the data processing, parameter settings for each model and other details.
 	
+	\subsection{Label Selection}
+	Since there many labels in the dataset, we have to choose some of them to be the classification objective. The first label we choose is \textit{MaterialType}, for every sample has this label. We also choose \textit{Sex} (female \& male) for it is also very important label though many of the samples' Sex label is empty. The third and fourth labels we choose are \textit{DiseaseState} and \textit{BioSourceType}, and the statistics of this two labels are show in Figure~\ref{fig:Stat_DiseaseState} and \ref{fig:Stat_BioSourceType}. We can see that both labels are long-tailed distributed, so we only choose those labels which has more than 50 samples. 
+	
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{../figs/Stat_DiseaseState}
+	\caption{Statistics of label type \textit{DiseaseState}}
+	\label{fig:Stat_DiseaseState}
+	\end{figure}
+	
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{../figs/Stat_BioSourceType}
+	\caption{Statistics of label type \textit{BioSourceType}}
+	\label{fig:Stat_BioSourceType}
+	\end{figure}
+	
+	
+	we choose 4 of the labels as our classification objective. The statistics of the 4 labels are shown in Tabel~\ref{tab:label}
+	\begin{table}[tbp]
+		\centering
+		\begin{tabular}{l|cc}
+			\toprule
+			{Label Type} & \# Category & \# Samples \\
+			\midrule
+			{\textit{MaterialType}}& 2 & 5896 \\
+			{\textit{Sex}}		& 2 & 1536     \\
+			{\textit{DiseaseState}}& 16 & 3493 \\
+			{\textit{BioSourceType}}& 7 & 2293 \\
+			\bottomrule	
+		\end{tabular}
+		\caption{ Statistics of the 4 labels used in our experiments. }
+		\label{tab:label}
+	\end{table}
+	
+	\subsection{Experiment Details}
+	\subsubsection{Cross Validation}
+	In order to get a promising results, all the experiments are conducted with the same 5-fold separation for cross validation.  
+	
+	\subsubsection{Problem formulation}
+	For label \textit{MaterialType} and \textit{Sex}, since there are only two categories, we conduct binary classification. For label \textit{DiseaseState} and \textit{BioSourceType}, we conduct multi-class classification.
+	
+	\subsubsection{Evaluation Metric}
+	As shown in \textit{DiseaseState} and \textit{BioSourceType}, the distribution of different categories is not balanced, so simply use accuracy is not a realistic. Instead, we tend to choose $F_1$-score as our evaluation metric, because it take both precision $P$ and recall $R$ into account. We have:
+	\begin{equation}
+	P=\frac{TP}{TP+FP} \nonumber
+	\end{equation}
+	\begin{equation}
+	R=\frac{TP}{TP+FN} \nonumber
+	\end{equation}
+	where TP is True Positive, FP is False Positive and FN is False Negative. And $F_1$ is defined as the harmonic mean of $P$ and
+	$R$ : 
+	\begin{equation}
+	F_1=2\cdot\frac{P\cdot R}{P+R} \nonumber
+	\end{equation}
+	When there are multiple classes, we use so-called Micro $F_1$-score as the evaluation metric.
+	
+	\subsubsection{Implementation}
+	Our deep neural networks is implemented based on \textit{Keras} \cite{chollet2015keras}. The deep forest model is based on the release by \citet{zhou2017deep}, and rest of the model are implemented based on scikit-learn \cite{scikit-learn}.
+	
+	\subsection{Dimensionality Reduction}
+	The original data is a large $p$ small $n$ problem. So we have to do some dimensionality reduction and we employ PCA to do so. We reduced the original data (22283 dimension) to different dimensions (100,200,400,500,1000,1200,2000,3400) and the ratio of reserved variance are shown in Tabel~\ref{tab:PCA}.
+	
+	\begin{table}[tbp]
+		\centering
+		\begin{tabular}{l|c}
+			\toprule
+			Dimension & Reserved Variance (\%) \\
+			\midrule
+			100 & 80.64 \\
+			200 & 85.43 \\
+			400 & 89.33 \\
+			500 & 90.47 \\
+			1000 & 93.78 \\
+			1200 & 94.65 \\
+			2000 & 96.99 \\
+			3400 & 99.00 \\			
+			\bottomrule	
+		\end{tabular}
+		\caption{ Reserved Variance (\%) of different reduced dimension. }
+		\label{tab:PCA}
+	\end{table}
+	
+	To determine the suitable dimension considering both feature representation ability and computation complexity, we evaluate these different dimension data in all the 4 tasks using a SVM classifier with linear kernel. The result is shown in Figure~\ref{fig:PCA_Dimension} and we find that when dimension is greater than 500, the performance of SVM in all the 4 tasks will meet a bottle neck. So we choose to reduce the original data into 500 dimensions and this 500 dimensions data are used for experiments of SVM, LR, RF and DF.
+	
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{../figs/PCA_Dimension}
+\caption{The performance of SVM in 4 tasks with different data reduced dimensions.}
+\label{fig:PCA_Dimension}
+\end{figure}
+	
+\section{Results}
+The experiment results and analysis will be presented in this section.
+
+\subsection{SVM}
+We try different kernels (polynomial, RBF and sigmoid) with different $C$ and $\gamma$ for SVM model, because we want to find not only the best parameter settings but also how the parameters influence the model performance. 
+
+We first evaluate the influence of $\gamma$ in polynomial, RBF and sigmoid kernel and the results are shown in Figure~\ref{fig:gamma_poly}, \ref{fig:gamma_rbf} and \ref{fig:gamma_sigmoid}. We can find that polynomial kernel is more stable to $\gamma$, while RBF kernel and sigmoid kernel are much more sensitive to $\gamma$. This also indicates that the choice of kernel and parameter tuning is vary important in SVM and some kernels (polynomial kernel here) are more robust in some conditions.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{../figs/gamma_poly}
+\caption{Influence of $\gamma$ in polynomial kernel.}
+\label{fig:gamma_poly}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{../figs/gamma_rbf}
+\caption{Influence of $\gamma$ in RBF kernel.}
+\label{fig:gamma_rbf}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{../figs/gamma_sigmoid}
+\caption{Influence of $\gamma$ in sigmoid kernel.}
+\label{fig:gamma_sigmoid}
+\end{figure}
+
+
+We then set $\gamma$ as the best value and further evaluate the influence of $C$ in different kernels. the results are shown in Figure~\ref{fig:C_poly}, \ref{fig:C_rbf} and \ref{fig:C_sigmoid}. We can find that for all the 3 kernels and all the 4 tasks, when $C$ is heavily small, the performance is extremely poor. This is because when $C$ is very small, we allow many of the sample to be classified to the wrong class, which may hurt model's performance. As $C$ grows, the performance of both polymomial and RBF kernels grows consistently while the performance of sigmoid kernel has a small drop in the end. 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{../figs/C_poly}
+\caption{Influence of $C$ in polynomial kernels}
+\label{fig:C_poly}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{../figs/C_rbf}
+\caption{Influence of $C$ in RBF kernels}
+\label{fig:C_rbf}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{../figs/C_sigmoid}
+\caption{Influence of $C$ in sigmoid kernels}
+\label{fig:C_sigmoid}
+\end{figure}
+
+
+After extensive experiments on SVM, we get the best parameter settings for the four tasks shown in Tabel~\ref{tab:SVM}.
+
+
+	\begin{table}[tbp]
+		\centering
+		\begin{tabular}{l|cccc}
+			\toprule
+			{Label Type} & $F_1 (\%)$ & Kernel &$\gamma$ & $C$ \\
+			\midrule
+			{\textit{MaterialType}}&99.85 & polynomial &1e-3&1\\
+			{\textit{Sex}}		& 95.44 & sigmoid    &1e-5&10 \\
+			{\textit{DiseaseState}}& 95.31 & sigmoid &1e-5&10\\
+			{\textit{BioSourceType}}& 98.76 & polynomial &1e-3&1\\
+			\bottomrule	
+		\end{tabular}
+		\caption{Best parameter settings for SVM model. }
+		\label{tab:SVM}
+	\end{table}
+
+	
+	\subsection{Random Forest}
+	For random forest, we adjust many hyperparameters incluing: maximum feature number, maximum tree depth, minimal samples in split node and minimal samples in leaf node. Extensive experiments show that most of the hyperparameters have less or no influence on the results. We argue that this is because the data is quite linear separable, thus such ensemble methods can not leverage its best ability. Only one hyper parameter have influence on the results, which is minimal samples in leaf node (\textit{min\_samples\_leaf}) and is shown in Figure~\ref{fig:min_samples_leaf}.
+	
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{../figs/min_samples_leaf}
+\caption{Influence of \textit{min\_samples\_leaf} in random forest.}
+\label{fig:min_samples_leaf}
+\end{figure}
+	
+
+
+
+
+
 
 	\begin{acks}
 	This work is successfully produced thanks to the kind guidance from and discussion with Prof. Bo Yuan.
 	\end{acks}
+	
+	
 	
 	{\small
 		\bibliographystyle{ACM-Reference-Format}
 		\bibliography{bibliography} 	
 	}
 	
-	
+
 \end{document}

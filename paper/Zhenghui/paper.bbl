@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{12}
+\begin{thebibliography}{14}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -55,6 +55,16 @@
   \bibinfo{person}{Richard~A Olshen}.} \bibinfo{year}{1984}\natexlab{}.
 \newblock \bibinfo{booktitle}{{\em Classification and regression trees}}.
 \newblock \bibinfo{publisher}{CRC press}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Chollet et~al\mbox{.}}{Chollet
+  et~al\mbox{.}}{2015}]%
+        {chollet2015keras}
+\bibfield{author}{\bibinfo{person}{Fran{\c{c}}ois Chollet} {et~al\mbox{.}}}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \bibinfo{title}{Keras}.
+\newblock   (\bibinfo{year}{2015}).
 \newblock
 
 
@@ -136,6 +146,24 @@
   decision tree}.
 \newblock \bibinfo{journal}{{\em Informatica\/}} \bibinfo{volume}{33},
   \bibinfo{number}{2} (\bibinfo{year}{2009}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Pedregosa, Varoquaux, Gramfort, Michel,
+  Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
+  Cournapeau, Brucher, Perrot, and Duchesnay}{Pedregosa et~al\mbox{.}}{2011}]%
+        {scikit-learn}
+\bibfield{author}{\bibinfo{person}{F. Pedregosa}, \bibinfo{person}{G.
+  Varoquaux}, \bibinfo{person}{A. Gramfort}, \bibinfo{person}{V. Michel},
+  \bibinfo{person}{B. Thirion}, \bibinfo{person}{O. Grisel},
+  \bibinfo{person}{M. Blondel}, \bibinfo{person}{P. Prettenhofer},
+  \bibinfo{person}{R. Weiss}, \bibinfo{person}{V. Dubourg}, \bibinfo{person}{J.
+  Vanderplas}, \bibinfo{person}{A. Passos}, \bibinfo{person}{D. Cournapeau},
+  \bibinfo{person}{M. Brucher}, \bibinfo{person}{M. Perrot}, {and}
+  \bibinfo{person}{E. Duchesnay}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Scikit-learn: Machine Learning in {P}ython}.
+\newblock \bibinfo{journal}{{\em Journal of Machine Learning Research\/}}
+  \bibinfo{volume}{12} (\bibinfo{year}{2011}), \bibinfo{pages}{2825--2830}.
 \newblock
 
 
