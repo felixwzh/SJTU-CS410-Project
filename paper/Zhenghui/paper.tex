@@ -300,7 +300,7 @@
 \label{fig:PCA_Dimension}
 \end{figure}
 	
-\section{Results}
+\section{Results \& Analysis}
 The experiment results and analysis will be presented in this section.
 
 \subsection{SVM}
@@ -375,9 +375,29 @@ After extensive experiments on SVM, we get the best parameter settings for the f
 		\label{tab:SVM}
 	\end{table}
 
-	
+	 
 	\subsection{Random Forest}
-	For random forest, we adjust many hyperparameters incluing: maximum feature number, maximum tree depth, minimal samples in split node and minimal samples in leaf node. Extensive experiments show that most of the hyperparameters have less or no influence on the results. We argue that this is because the data is quite linear separable, thus such ensemble methods can not leverage its best ability. Only one hyper parameter have influence on the results, which is minimal samples in leaf node (\textit{min\_samples\_leaf}) and is shown in Figure~\ref{fig:min_samples_leaf}.
+	For random forest, we adjust many hyperparameters incluing: maximum feature number, maximum tree depth, minimal samples in split node and minimal samples in leaf node. Extensive experiments show that most of the hyperparameters have less or no influence on the results. We argue that this is because the data is quite linear separable, thus such ensemble methods can not leverage its best ability. 
+	
+	Only one hyper parameter have influence on the results, which is minimal samples in leaf node (\textit{min\_samples\_leaf}) and is shown in Figure~\ref{fig:min_samples_leaf}. We find that with the growing of \textit{min\_samples\_leaf}, the performance of all the 4 tasks decrease consistently. We think this is because random forest is a ensemble method and each weak classifier (decision tree here) should be somehow overfitted to the data (\textit{min\_samples\_leaf}), which enhance the whole model's diversity.
+	
+	The best results for 4 tasks are shown in Tabel~\ref{tab:RF}.
+	\begin{table}[tbp]
+		\centering
+		\begin{tabular}{l|cc}
+			\toprule
+			{Label Type} & $F_1 (\%)$& \textit{min\_samples\_leaf}  \\
+			\midrule
+			{\textit{MaterialType}}&99.35 &1\\
+			{\textit{Sex}}		& 80.14  &1\\
+			{\textit{DiseaseState}}& 94.41&1 \\
+			{\textit{BioSourceType}}& 97.20 &1\\
+			\bottomrule	
+		\end{tabular}
+		\caption{Best parameter settings for random forest model. }
+		\label{tab:RF}
+	\end{table}
+	 
 	
 \begin{figure}[h]
 \centering
@@ -387,8 +407,25 @@ After extensive experiments on SVM, we get the best parameter settings for the f
 \end{figure}
 	
 
+\subsection{Deep Forets}
+Since the features do not have any locality or direct relationship, we only employ the cascade forest structure with 1 random forest (10 trees) and 1 completely-random tree forests (10 trees) in each level. As a extension to the original deep forest \cite{zhou2017deep}, we also add a LR model in each level to boost the performance of it. 
 
-
+We find that when applied on 4 different tasks, the final levels of deep forest varies. The results are shown in Tabel~\ref{tab:DeepForest}. We can find that Deep forest beat random forest in all the 4 tasks, which indicates that such \textit{deep} variant of traditional works. We also noticed that the performance of deep forest is compatible to SVM, and we argue that this is because of the data's distribution.
+\begin{table}[tbp]
+	\centering
+	\begin{tabular}{l|cc}
+		\toprule
+		{Label Type} & $F_1 (\%)$&Depth\\
+		\midrule
+		{\textit{MaterialType}}&99.83 &?\\
+		{\textit{Sex}}		& 92.90  &?\\
+		{\textit{DiseaseState}}& 95.58 &? \\
+		{\textit{BioSourceType}}& 98.62 &?\\
+		\bottomrule	
+	\end{tabular}
+	\caption{Best parameter settings for random forest model. }
+	\label{tab:DeepForest}
+\end{table}
 
 
 
