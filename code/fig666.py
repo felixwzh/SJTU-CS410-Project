@@ -51,6 +51,8 @@ plt.legend(loc='lower right')
 # plt.legend()
 plt.savefig('lr_acc_sex.pdf')
 plt.show()
+fig = plt.figure(frameon=False)
+fig.set_size_inches(6, 4)
 
 plt.grid()
     # fig = pylab.figure()
