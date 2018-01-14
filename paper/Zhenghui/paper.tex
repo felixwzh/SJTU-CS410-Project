@@ -5,6 +5,8 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{natbib}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 
 \newcommand{\kai}[1]{{\bf \color{blue} [[Shukai says ``#1'']]}}
 \newcommand{\heng}[1]{{\bf \color{cyan} [[Yuheng says ``#1'']]}}
@@ -129,6 +131,29 @@
 	\section{Models}
 	In this section, we briefly introduce the models we leveraged in this project, from traditional machine learning models (SVM, LR, random forest) to deep models (deep neural networks and deep forest).
 	
+	
+	\subsection{Logistic Regression}
+	Logistic regression (LR) \cite{hosmer2013applied} is a  classical  supervised linear classifier.
+	Suppose now that we are given all of the training dataset annotated with labels. We have the calculated class possibility:
+	\begin{equation}
+	P(Y=y_i|x_i)=\frac{e^{\omega x_i +b}}{1+\sum_i e^{\omega x_i +b}} 
+	\label{lr_1}
+	\end{equation}
+	where $\mathbf{x}$ denotes the feature vector, $Y$ denotes label, $\omega$ denotes the regression weights and $b$ denotes the regression bias. We can determine the value of $\omega$ and $b$ using Maximum Likelihood Estimation (MLE) method with labeled training data. Assume $h_\omega(x_i)$ denoting the possibilities, the log likelihood function $L(\omega)$ is defined as:
+	
+	\begin{centering}
+		\begin{equation}
+		L(\omega)=\sum^N_i[y_i logh_\omega(x_i)+(1-y_i) log(1-h_\omega(x_i))]
+		\label{lr_2}
+		\end{equation}
+		
+	\end{centering}
+	
+	Various gradient-based optimize algorithm can be used to determine the value of $\omega$ and $b$. In our work, we use logistic regression in both multiple classification task and binary classification task and we compare its performance under various optimization and regularization methods.
+	
+	
+		
+	
 	\subsection{Support Vector Machine}
 	Support vector machine (SVM) is a supervised leanring model proposed by \citet{cortes1995support}. Its main idea is to find a hyper plane in the feature space to separate different samples into different categories, Different from other linear model like linear regression, SVM aims to maximize the \textit{margin} between two different categories' samples and the samples on the boundary are so-called \textit{support vectors}. 
 	
@@ -198,12 +223,104 @@
 	After the multi-grained sacnning layer, a cascade forest structure is leveraged to learn better representation in a level-by-level way. Each level is an ensemble fo decision tree forest. And the \textit{diversity} is encouraged by incluing different types of forest like 2 random forests with $k=\sqrt{d}$ and 2 completely-random tree forests with $k=1$. The split is guided by the \textit{gini} value. The construction of the levels are adaptive. Each level will generate a class vector as a leared representation for next level and each level's input are the origin feature vector concatenated with early level's output class vector. For each level, we evaluate the performance with $k$-fold cross validation. If there is no significant improvement of the performance, we stop the training. The illustration for both multi-grained sacnning and cascade forest structure are shown in Figure~\ref{fig:deep-forest}, which is the whole model's pipline. 
 	
 	
+	
 \begin{figure*}[h]
 \centering
 \includegraphics[width=0.9\linewidth]{../figs/deep-forest}
 \caption{The overall procedure of deep forest. Suppose there are three classes to predict, raw features are 400-dim, and three sizes of sliding windows are used.}
 \label{fig:deep-forest}
 \end{figure*}
+
+
+\subsection{Principal Components Analysis}
+Principal components analysis (PCA) \cite{dunteman1989principal} aims to project the data to a lower-dimensional space in a linear way. 
+And the constraint is that we want to maximize the variance of the data in low dimension. More formally, the PCA algorithm is shown in Algorithm~\ref{alg:PCA} 
+
+\begin{algorithm}[!htb]
+	\caption{Principal Components Analysis}\label{alg:PCA}
+	\begin{algorithmic}[1]
+		\REQUIRE
+		Data matrix $X$ with size $n\times p$, where $n$ is the number of samples and $p$ is the feature dimension.
+		\STATE
+		Normalize the $X$ $x=x-\sum_i^N x_i$;
+		\STATE
+		Calculate the covariance matrix $C=\frac{X^T X}{n-1}$.
+		\STATE
+		diagonalize $C$, $C\gets V L V^T$, where $V$ is the matrix of eigenvectors and $L$ is diagonal matrix with eigenvalues $\lambda_i$.
+		\STATE
+		$i \gets 0$
+		\REPEAT
+		\STATE
+		$i \gets i+1$
+		\UNTIL{$\frac{\sum^d_i \lambda_i}{\sum^n_i \lambda_i} \ge Threshold$} 
+		\STATE
+		$d'\gets i$
+		\STATE
+		$\tilde{\mathbf{\Lambda}}\gets \text{diag}(\lambda_1,\lambda_2,...,\lambda_i)$
+		\STATE
+		$\tilde{\mathbf{V}}$ is the corresponding eigenvectors matrix.
+		\STATE
+		\textbf{output}:~~$\tilde{\mathbf{V}}\tilde{\mathbf{\Lambda}}^{1/2} \in \mathbb{R}^{m\times d'}$
+	\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{Autoencoder}
+An autoencoder neural network \cite{ng2011sparse} is an unsupervised learning algorithm that applies back propagation, setting the target values to be equal to the inputs. The structure of autoencoder is show as Figure~\ref{auto_1}:
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.3\textwidth]{../figs/auto_1.png}
+	\caption{structure of autoencoder}
+	\label{auto_1}
+	\centering
+\end{figure}
+
+Now suppose we have  a set of unlabeled training examples $X=[x_1,x_2,x_3,\dots]$, we want $X=H_{W,b}(X)$. Then the lower-dimension output of hidden layer $L_2$ is the encoder of the raw data. This output is a nonlinear dimensionality reduction, which may overcome the weakness of PCA that it is only a linear dimensionality reduction method.
+
+
+\subsection{Deep Learing Based Methods}
+Deep learning has been shown as a successful machine learning method for a variety of tasks. In our work, we use a deep neural network with fully-connected multilayer structure both on PCA-processed data and on raw data with \textbf{greedy layer-wise pre training}. Besides, we add L2 regularization in each fully-connected layer to avoid overfitting and control the model complexity.
+\subsubsection{network structure} Since the features do not have any locality or direct relationship, we don¡¯t use convolutions.\\
+
+\begin{itemize}
+	\item \textbf{nn on pca-processed data}\\
+	In this model, firstly we use pca-processed data (500-dimension) as our network input. Then we add hidden layer1(256-dimension), hidden layer2(512-dimension), hidden layer3(256-dimension), finally a output layer.  The structure is shown as Fig(\ref{nn_1}) network \romannumeral1. 
+	For weight initialization, we initialize each neurons weight vector as a random vector sampled from a multi-dimensional gaussian. For bias initialization, we set the bias vectors all to $0$. We initialize our weight with the consideration that the size of our network is limited and it can be trained easily according to the network \romannumeral2.
+	
+	\item \textbf{nn on raw data}\\
+	In this model, we use the raw data as the network inputs. Then we add hidden layer1(8192-dimension), hidden layer2(512-dimension), hidden layer3(128-dimension), finally a output layer.  The structure is shown as Fig(\ref{nn_1}) network \romannumeral2. Since we did not use the low-dimension data, the training become much harder according to out experiment. So the network initialization is very import. We use greedy layer-wise pre training , which is a pre-train method based on the idea of autoencoder, to initialize the network. 
+\end{itemize}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.24\textwidth]{../figs/nn_pca.pdf}
+	\includegraphics[width=0.24\textwidth]{../figs/nn_raw.pdf}
+	\caption{a.network \romannumeral1;  b, network \romannumeral2}
+	\label{nn_1}
+	\centering
+\end{figure}
+
+\subsubsection{Regularization}
+We use L2 regularization in each fullt-connected layer.It can be implemented by penalizing the squared magnitude of all parameters directly in the objective. For every weight $w$ in the network, we add the term $1/2¦Ëw$ to the objective, where ¦Ë is the regularization strength. This can help control the capacity of neural networks to prevent overfitting.
+
+Furthermore, we employ Dropout to prevent overfit- ting. While training, dropout is implemented by only keep- ing a neuron active with some probability p, or setting it to zero otherwise.
+
+\subsubsection{Pre-train}
+In network \romannumeral2, the training get very hard because of the high dimension of the network. We use \textbf{greedy layer-wise pre training} to pre-train. It will determine the initial weights of each layer layer by layer with the idea of autoencoder. Since each layer has been local optimal solution, the training get much easier .
+
+More specifically, to determine weights of first hidden layer, we use the network shown as Fig(\ref{auto_1}). Once we get $X=h_{\omega,b}(X)$, it means the hidden layer can encode the input properly, at the same time it can pass these extracted feature to the following layer. Seemingly, when we initialize the second hidden layer, we use the output of the first hidden layer as the input of network in Fig(\ref{auto_1}). Thus we can determine all the weights. The process is show as Fig(\ref{pretrain_1}). The network \romannumeral4  in  Fig(\ref{pretrain_1}) is we want, so to determine the 3 layers weights, we use network \romannumeral1-network \romannumeral3 (which are same as  Fig(\ref{auto_1})) to train them.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain1.png}
+	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain2.png}
+	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain3.png}
+	\includegraphics[width=0.24\textwidth,height=3cm]{../figs/pretrain4.png}
+	\caption{a.network \romannumeral1;  b, network \romannumeral2; c, network \romannumeral3; d, network \romannumeral4}
+	\label{pretrain_1}
+	\centering
+\end{figure}
+
 	
 	\section{Experiment}
 	In this section, we describe the experiment settings, which includes the data processing, parameter settings for each model and other details.
@@ -214,14 +331,14 @@
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{../figs/Stat_DiseaseState}
-	\caption{Statistics of label type \textit{DiseaseState}}
+	\caption{Statistics of label \textit{DiseaseState}}
 	\label{fig:Stat_DiseaseState}
 	\end{figure}
 	
 	\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{../figs/Stat_BioSourceType}
-	\caption{Statistics of label type \textit{BioSourceType}}
+	\caption{Statistics of label \textit{BioSourceType}}
 	\label{fig:Stat_BioSourceType}
 	\end{figure}
 	
@@ -417,9 +534,9 @@ We find that when applied on 4 different tasks, the final levels of deep forest 
 		\toprule
 		{Label Type} & $F_1 (\%)$&Depth\\
 		\midrule
-		{\textit{MaterialType}}&99.83 &?\\
-		{\textit{Sex}}		& 92.90  &?\\
-		{\textit{DiseaseState}}& 95.58 &? \\
+		{\textit{MaterialType}}&99.83 &5\\
+		{\textit{Sex}}		& 92.90  &9\\
+		{\textit{DiseaseState}}& 95.58 &8 \\
 		{\textit{BioSourceType}}& 98.62 &?\\
 		\bottomrule	
 	\end{tabular}

@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{14}
+\begin{thebibliography}{17}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -88,6 +88,15 @@
 \newblock
 
 
+\bibitem[\protect\citeauthoryear{Dunteman}{Dunteman}{1989}]%
+        {dunteman1989principal}
+\bibfield{author}{\bibinfo{person}{George~H Dunteman}.}
+  \bibinfo{year}{1989}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em Principal components analysis}}.
+\newblock Number~69. \bibinfo{publisher}{Sage}.
+\newblock
+
+
 \bibitem[\protect\citeauthoryear{He, Zhang, Ren, and Sun}{He
   et~al\mbox{.}}{2016}]%
         {he2016deep}
@@ -108,6 +117,18 @@
 \newblock \showarticletitle{Long short-term memory}.
 \newblock \bibinfo{journal}{{\em Neural computation\/}} \bibinfo{volume}{9},
   \bibinfo{number}{8} (\bibinfo{year}{1997}), \bibinfo{pages}{1735--1780}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Hosmer~Jr, Lemeshow, and Sturdivant}{Hosmer~Jr
+  et~al\mbox{.}}{2013}]%
+        {hosmer2013applied}
+\bibfield{author}{\bibinfo{person}{David~W Hosmer~Jr}, \bibinfo{person}{Stanley
+  Lemeshow}, {and} \bibinfo{person}{Rodney~X Sturdivant}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em Applied logistic regression}}.
+  Vol.~\bibinfo{volume}{398}.
+\newblock \bibinfo{publisher}{John Wiley \& Sons}.
 \newblock
 
 
@@ -146,6 +167,16 @@
   decision tree}.
 \newblock \bibinfo{journal}{{\em Informatica\/}} \bibinfo{volume}{33},
   \bibinfo{number}{2} (\bibinfo{year}{2009}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ng}{Ng}{2011}]%
+        {ng2011sparse}
+\bibfield{author}{\bibinfo{person}{Andrew Ng}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Sparse autoencoder}.
+\newblock \bibinfo{journal}{{\em CS294A Lecture notes\/}} \bibinfo{volume}{72},
+  \bibinfo{number}{2011} (\bibinfo{year}{2011}), \bibinfo{pages}{1--19}.
 \newblock
 
 

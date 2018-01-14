@@ -17,53 +17,56 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty address in breiman1984classification
 Warning--empty publisher in cristianini1999introduction
 Warning--empty address in cristianini1999introduction
+Warning--there's a number but no series in dunteman1989principal
+Warning--empty address in dunteman1989principal
 Warning--empty publisher in he2016deep
 Warning--empty address in he2016deep
+Warning--empty address in hosmer2013applied
 Warning--empty publisher in liu2005one
 Warning--empty address in liu2005one
 Warning--page numbers missing in both pages and numpages fields in madzarov2009multi
 Warning--empty address in zhou2012ensemble
 Warning--no number and no volume in zhou2017deep
 Warning--page numbers missing in both pages and numpages fields in zhou2017deep
-You've used 14 entries,
+You've used 17 entries,
             5795 wiz_defined-function locations,
-            1397 strings with 17548 characters,
-and the built_in function-call counts, 16642 in all, are:
-= -- 2192
-> -- 676
-< -- 0
-+ -- 232
-- -- 248
-* -- 1192
-:= -- 1759
-add.period$ -- 72
-call.type$ -- 14
-change.case$ -- 101
-chr.to.int$ -- 14
-cite$ -- 25
-duplicate$ -- 1363
-empty$ -- 966
-format.name$ -- 292
-if$ -- 4030
+            1415 strings with 17827 characters,
+and the built_in function-call counts, 19375 in all, are:
+= -- 2537
+> -- 757
+< -- 1
++ -- 255
+- -- 276
+* -- 1379
+:= -- 2056
+add.period$ -- 91
+call.type$ -- 17
+change.case$ -- 118
+chr.to.int$ -- 17
+cite$ -- 31
+duplicate$ -- 1616
+empty$ -- 1145
+format.name$ -- 324
+if$ -- 4677
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 48
-newline$ -- 149
-num.names$ -- 112
-pop$ -- 516
+missing$ -- 56
+newline$ -- 173
+num.names$ -- 136
+pop$ -- 603
 preamble$ -- 1
-purify$ -- 227
+purify$ -- 271
 quote$ -- 0
-skip$ -- 470
+skip$ -- 548
 stack$ -- 0
-substring$ -- 1147
-swap$ -- 132
-text.length$ -- 0
+substring$ -- 1346
+swap$ -- 154
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 263
-warning$ -- 11
-while$ -- 114
+type$ -- 309
+warning$ -- 14
+while$ -- 137
 width$ -- 0
-write$ -- 273
+write$ -- 326
 (There was 1 error message)
